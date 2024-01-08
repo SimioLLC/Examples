@@ -1,0 +1,11 @@
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\MyTextFileReadWrite.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\MyTextFileReadWrite.pdb
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\SimioAPI.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\MyTextFileReadWrite.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\MyTextFileReadWrite.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\MyTextFileReadWrite.csproj.CoreCompileInputs.cache
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\MyTextFileReadWrite.csproj.CopyComplete
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\MyTextFileReadWrite.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\MyTextFileReadWrite.pdb

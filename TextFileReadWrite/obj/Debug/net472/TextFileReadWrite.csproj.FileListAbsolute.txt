@@ -1,0 +1,22 @@
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\bin\Debug\net472\TextFileReadWrite.dll
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\bin\Debug\net472\TextFileReadWrite.pdb
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\bin\Debug\net472\SimioAPI.dll
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.csproj.AssemblyReference.cache
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.GeneratedMSBuildEditorConfig.editorconfig
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.csproj.CoreCompileInputs.cache
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.csproj.CopyComplete
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.dll
+C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.pdb
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\TextFileReadWrite.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\TextFileReadWrite.pdb
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\SimioAPI.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.csproj.CoreCompileInputs.cache
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.csproj.CopyComplete
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.dll
+C:\Users\dan_h\source\repos\Examples\TextFileReadWrite\obj\Debug\net472\TextFileReadWrite.pdb

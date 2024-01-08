@@ -1,0 +1,11 @@
+C:\Users\dan_h\source\repos\Examples\BinaryGate\bin\Debug\net472\BinaryGate.dll
+C:\Users\dan_h\source\repos\Examples\BinaryGate\bin\Debug\net472\BinaryGate.pdb
+C:\Users\dan_h\source\repos\Examples\BinaryGate\bin\Debug\net472\SimioAPI.dll
+C:\Users\dan_h\source\repos\Examples\BinaryGate\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Users\dan_h\source\repos\Examples\BinaryGate\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Users\dan_h\source\repos\Examples\BinaryGate\obj\Debug\net472\BinaryGate.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\BinaryGate\obj\Debug\net472\BinaryGate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\BinaryGate\obj\Debug\net472\BinaryGate.csproj.CoreCompileInputs.cache
+C:\Users\dan_h\source\repos\Examples\BinaryGate\obj\Debug\net472\BinaryGate.csproj.CopyComplete
+C:\Users\dan_h\source\repos\Examples\BinaryGate\obj\Debug\net472\BinaryGate.dll
+C:\Users\dan_h\source\repos\Examples\BinaryGate\obj\Debug\net472\BinaryGate.pdb
