@@ -16,7 +16,7 @@ namespace SourceServerSink
         /// </summary>
         public string Name
         {
-            get { return "Source, Server, Sink"; }
+            get { return "My Source, Server, Sink"; }
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace SourceServerSink
         /// </summary>
         public System.Drawing.Image Icon
         {
-            get { return Properties.Resources.Icon; }
+            get { return MySourceServerSink.Properties.Resources.Icon; }
         }
 
         /// <summary>

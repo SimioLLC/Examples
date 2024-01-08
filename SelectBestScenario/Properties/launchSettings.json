@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MySelectBestScenario": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Simio LLC\\Simio\\Simio.exe"
+    }
+  }
+}

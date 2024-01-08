@@ -1,0 +1,13 @@
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\bin\Debug\net472\MySimioTravelSteeringBehaviors.dll
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\bin\Debug\net472\MySimioTravelSteeringBehaviors.pdb
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\bin\Debug\net472\SimioAPI.dll
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.Properties.Resources.resources
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.csproj.GenerateResource.cache
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.csproj.CoreCompileInputs.cache
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.csproj.CopyComplete
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.dll
+C:\Users\dan_h\source\repos\Examples\SimioTravelSteeringBehaviors\obj\Debug\net472\MySimioTravelSteeringBehaviors.pdb

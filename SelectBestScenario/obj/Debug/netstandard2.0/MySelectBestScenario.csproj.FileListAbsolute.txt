@@ -1,0 +1,5 @@
+C:\Users\dan_h\source\repos\Examples\SelectBestScenario\obj\Debug\netstandard2.0\MySelectBestScenario.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\SelectBestScenario\obj\Debug\netstandard2.0\MySelectBestScenario.Properties.Resources.resources
+C:\Users\dan_h\source\repos\Examples\SelectBestScenario\obj\Debug\netstandard2.0\MySelectBestScenario.csproj.GenerateResource.cache
+C:\Users\dan_h\source\repos\Examples\SelectBestScenario\obj\Debug\netstandard2.0\MySelectBestScenario.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\SelectBestScenario\obj\Debug\netstandard2.0\MySelectBestScenario.csproj.CoreCompileInputs.cache

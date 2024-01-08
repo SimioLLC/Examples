@@ -1,0 +1,11 @@
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\obj\Debug\net472\MyDbReadWrite.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\obj\Debug\net472\MyDbReadWrite.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\obj\Debug\net472\MyDbReadWrite.csproj.CoreCompileInputs.cache
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\bin\Debug\net472\MyDbReadWrite.dll
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\bin\Debug\net472\MyDbReadWrite.pdb
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\bin\Debug\net472\SimioAPI.dll
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\obj\Debug\net472\MyDbReadWrite.csproj.CopyComplete
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\obj\Debug\net472\MyDbReadWrite.dll
+C:\Users\dan_h\source\repos\Examples\DbReadWrite\obj\Debug\net472\MyDbReadWrite.pdb

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBinaryGate", "BinaryGate\MyBinaryGate.csproj", "{E4CFA60E-5725-4DE9-B6A6-40CDB0D2AB60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTextFileReadWrite", "TextFileReadWrite\MyTextFileReadWrite.csproj", "{5883718D-3F9A-4F6C-9DC6-444F4ED96EBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySelectBestScenario", "SelectBestScenario\MySelectBestScenario.csproj", "{678F0EC1-435F-4A36-9477-317FFBEF5886}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDbReadWrite", "DbReadWrite\MyDbReadWrite.csproj", "{ABA1C2FC-C04B-420E-8189-2A50D52B3999}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySimioTravelSteeringBehaviors", "SimioTravelSteeringBehaviors\MySimioTravelSteeringBehaviors.csproj", "{DBFD0220-18E0-492E-A62C-F89A116682C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySourceServerSink", "SourceServerSink\MySourceServerSink.csproj", "{AFEC0FD8-07E5-41F6-8967-F05E7CE86E74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4CFA60E-5725-4DE9-B6A6-40CDB0D2AB60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4CFA60E-5725-4DE9-B6A6-40CDB0D2AB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4CFA60E-5725-4DE9-B6A6-40CDB0D2AB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4CFA60E-5725-4DE9-B6A6-40CDB0D2AB60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5883718D-3F9A-4F6C-9DC6-444F4ED96EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5883718D-3F9A-4F6C-9DC6-444F4ED96EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5883718D-3F9A-4F6C-9DC6-444F4ED96EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5883718D-3F9A-4F6C-9DC6-444F4ED96EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678F0EC1-435F-4A36-9477-317FFBEF5886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678F0EC1-435F-4A36-9477-317FFBEF5886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678F0EC1-435F-4A36-9477-317FFBEF5886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678F0EC1-435F-4A36-9477-317FFBEF5886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA1C2FC-C04B-420E-8189-2A50D52B3999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA1C2FC-C04B-420E-8189-2A50D52B3999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA1C2FC-C04B-420E-8189-2A50D52B3999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA1C2FC-C04B-420E-8189-2A50D52B3999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFD0220-18E0-492E-A62C-F89A116682C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFD0220-18E0-492E-A62C-F89A116682C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFD0220-18E0-492E-A62C-F89A116682C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFD0220-18E0-492E-A62C-F89A116682C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFEC0FD8-07E5-41F6-8967-F05E7CE86E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEC0FD8-07E5-41F6-8967-F05E7CE86E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEC0FD8-07E5-41F6-8967-F05E7CE86E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFEC0FD8-07E5-41F6-8967-F05E7CE86E74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE93C651-A4C8-4356-B801-E5CFBA22CE7F}
+	EndGlobalSection
+EndGlobal

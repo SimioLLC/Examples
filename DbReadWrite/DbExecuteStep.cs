@@ -13,7 +13,7 @@ namespace DBReadWrite
         /// </summary>
         public string Name
         {
-            get { return "DbExecute"; }
+            get { return "MyDbExecute"; }
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace DBReadWrite
         {
             get { return MY_ID; }
         }
-        static readonly Guid MY_ID = new Guid("{1aa53c23-417c-41e0-8303-a2c1122d49fa}");
+        static readonly Guid MY_ID = new Guid("{FD28DB65-D055-4573-A3AB-8FC6CE7BD883}");
 
         /// <summary>
         /// Property returning the number of exits out of the step. Can return either 1 or 2. 

@@ -1,0 +1,13 @@
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\bin\Debug\net472\MySourceServerSink.dll
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\bin\Debug\net472\MySourceServerSink.pdb
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\bin\Debug\net472\SimioAPI.dll
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.Properties.Resources.resources
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.csproj.GenerateResource.cache
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.csproj.CoreCompileInputs.cache
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.csproj.CopyComplete
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.dll
+C:\Users\dan_h\source\repos\Examples\SourceServerSink\obj\Debug\net472\MySourceServerSink.pdb

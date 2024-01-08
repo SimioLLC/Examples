@@ -14,7 +14,7 @@ namespace SelectBestScenario
         /// </summary>
         public string Name
         {
-            get { return "Select Best Scenario using KN"; }
+            get { return "My Select Best Scenario using KN"; }
         }
 
         /// <summary>
@@ -30,19 +30,19 @@ namespace SelectBestScenario
         /// </summary>
         public System.Drawing.Image Icon
         {
-            get { return Properties.Resources.Icon; }
+            get { return MySelectBestScenario.Properties.Resources.Icon; }
         }
 
         /// <summary>
         /// All experimentation add-ins must have their own UniqueID.  If you copy this example for your own purposes, you should
         /// rename it, and change its UniqueID.  You can generate a new Guid by using Microsoft's GuidGen.exe tool or by browsing
-        /// to http://www.guidgen.com.  
+        /// to http://www.guidgen.com or - if in VisualStudio - select menu Tools > Create GUID.  
         /// </summary>
         public Guid UniqueID
         {
             get { return MY_ID; }
         }
-        static readonly Guid MY_ID = new Guid("{56af1176-8608-46af-9df2-da81d7fe167b}");
+        static readonly Guid MY_ID = new Guid("{85B2607B-D45D-4CD7-A368-985E88584D9D}"); //Jan2024/danH
 
         /// <summary>
         /// This method is called by Simio whenever it needs to connect this add-in to a Simio experiment.

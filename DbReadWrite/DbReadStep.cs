@@ -14,7 +14,7 @@ namespace DBReadWrite
         /// </summary>
         public string Name
         {
-            get { return "DbRead"; }
+            get { return "MyDbRead"; }
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace DBReadWrite
         {
             get { return MY_ID; }
         }
-        static readonly Guid MY_ID = new Guid("{94c9c736-fd52-48da-a862-c196a8627e3d}");
+        static readonly Guid MY_ID = new Guid("{E9A072D3-91F1-4F20-A385-4FA8C999C633}"); //Jan2024/danH
 
         /// <summary>
         /// Property returning the number of exits out of the step. Can return either 1 or 2. 
@@ -180,7 +180,7 @@ namespace DBReadWrite
                 }
             }
 
-            context.ExecutionInformation.TraceInformation(String.Format("DbRead has read data from table {0}", tableName));
+            context.ExecutionInformation.TraceInformation($"DbRead has read data from table={tableName}");
 
             // We are done reading, have the token proceed out of the primary exit
             return ExitType.FirstExit;
