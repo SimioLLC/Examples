@@ -48,7 +48,7 @@ namespace GoodSelectionProcedure
         /// </summary>
         public System.Drawing.Image Icon
         {
-            get { return Properties.Resources.Icon; }
+            get { return MyGoodSelectionProcedure.Properties.Resources.Icon; }
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace GoodSelectionProcedure
         {
             get { return MY_ID; }
         }
-        static readonly Guid MY_ID = new Guid("{d41b795d-f37e-48ce-b85d-219e29092b5a}");
+        static readonly Guid MY_ID = new Guid("{ACD3E7D6-BB25-4465-B028-EA0EBDB1843C}"); //Jan2024/danH
 
         /// <summary>
         /// This method is called by Simio whenever it needs to connect this add-in to a Simio experiment.

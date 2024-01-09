@@ -1,0 +1,14 @@
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\bin\Debug\net472\MyGoodSelectionProcedure.dll
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\bin\Debug\net472\MyGoodSelectionProcedure.pdb
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\bin\Debug\net472\MathNet.Numerics.dll
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\bin\Debug\net472\SimioAPI.dll
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\bin\Debug\net472\SimioAPI.Extensions.dll
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\bin\Debug\net472\SimioAPI.Graphics.dll
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.csproj.AssemblyReference.cache
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.Properties.Resources.resources
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.csproj.GenerateResource.cache
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.csproj.CoreCompileInputs.cache
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.csproj.CopyComplete
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.dll
+C:\Users\dan_h\source\repos\Examples\GoodSelectionProcedure\obj\Debug\net472\MyGoodSelectionProcedure.pdb

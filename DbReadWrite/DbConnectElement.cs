@@ -46,7 +46,7 @@ namespace DBReadWrite
             get { return MY_ID; }
         }
         // We need to use this ID in the element reference property of the Read/Write steps, so we make it public
-        public static readonly Guid MY_ID = new Guid("{5D5F931D-AFC9-4802-A782-A156AA0FC24F}");
+        public static readonly Guid MY_ID = new Guid("{3C8A23DB-E56C-4CEE-BE2A-FFFA08269F92}"); //Jan2024/danH
 
         /// <summary>
         /// Method called that defines the property, state, and event schema for the element.
@@ -84,6 +84,7 @@ namespace DBReadWrite
         public DBConnectElement(IElementData data)
         {
             _data = data;
+            // Create some propertyReaders
             IPropertyReader connectStringProp = _data.Properties.GetProperty("ConnectionString");
             IPropertyReader providerNameProp = _data.Properties.GetProperty("ProviderName");
 
@@ -103,7 +104,7 @@ namespace DBReadWrite
             foreach (DataRow row in table.Rows)
             {
                 providerNames.Add(row[0].ToString());
-                if (row[0].ToString() == providerNameProp.GetStringValue(_data.ExecutionContext))
+                if (row[0].ToString().ToLower() == providerNameProp.GetStringValue(_data.ExecutionContext).ToLower())
                 {
                     _db = DbProviderFactories.GetFactory(row);
                     break;

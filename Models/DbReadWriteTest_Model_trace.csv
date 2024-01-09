@@ -1,0 +1,4 @@
+Time(Hours),EntityID,ObjectName,ProcessID,StepName,Action
+0.00108730158730159,DefaultEntity.11,Model,2.Input_Server1_Entered,[MyDbWrite] MyDbWrite1,Unable to get value of property 'MyDbWrite.Columns[1].Expression'.
+0.00108730158730159,DefaultEntity.11,Model,2.Input_Server1_Entered,[MyDbWrite] MyDbWrite1,Invalid operation because types of operands must match. Both must be numeric or string.
+

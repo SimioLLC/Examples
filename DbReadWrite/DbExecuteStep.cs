@@ -39,7 +39,7 @@ namespace DBReadWrite
         {
             get { return MY_ID; }
         }
-        static readonly Guid MY_ID = new Guid("{FD28DB65-D055-4573-A3AB-8FC6CE7BD883}");
+        static readonly Guid MY_ID = new Guid("{A3EFDAD8-08E4-4B86-A3DD-E44BCB0D1D38}");    //Jan2024/danH
 
         /// <summary>
         /// Property returning the number of exits out of the step. Can return either 1 or 2. 

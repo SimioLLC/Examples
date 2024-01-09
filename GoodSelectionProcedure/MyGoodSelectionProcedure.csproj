@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net472</TargetFrameworks>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
@@ -12,20 +12,18 @@
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="SimioAPI, Version=8.142.13807.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimioAPILib\$(TargetFramework)\SimioAPI.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="SimioAPI.Extensions, Version=8.142.13807.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SimioAPILib\$(TargetFramework)\SimioAPI.Extensions.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
     <PackageReference Include="MathNet.Numerics" Version="4.5.1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SimioAPI">
+      <HintPath>..\..\..\..\..\..\Program Files\Simio LLC\Simio\SimioAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="SimioAPI.Extensions">
+      <HintPath>..\..\..\..\..\..\Program Files\Simio LLC\Simio\SimioAPI.Extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

@@ -18,7 +18,7 @@ namespace SimioTravelSteeringBehaviors
         /// </summary>
         public string Name
         {
-            get { return "Wander"; }
+            get { return "MyWander"; }
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace SimioTravelSteeringBehaviors
         {
             get { return MY_ID; }
         }
-        static readonly Guid MY_ID = new Guid("{61C45B1D-4155-4812-83DF-87E22841E0DA}");
+        static readonly Guid MY_ID = new Guid("{B14224D1-1B88-418F-B529-B8D8FD513AD2}"); // Jan2024/danH
 
         /// <summary>
         /// Defines the property schema for the travel steering behavior.
