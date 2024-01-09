@@ -1,1 +1,3 @@
-# Examples
+# Examples 
+Examples is a collection of Example projects demonstrating the use of the SimioEngine API. Many of these samples are from the Simio desktop installation examples. They have been placed here to make them more readily accessible and easier to get them up-and-running. These examples often assume that Simio was installed at the default c:\program files\Simio LLC\Simio. If you placed Simio elsewhere you will have to change the References to point to the DLLs, and for the Steps and Design to place the Debug launch of Simio.exe.
+Some of these are also installed from other sources the building of these would show up as duplicates in Simio. To prevent this, a "My" has been prepended to the name, and a unique GUID has been assigned.
