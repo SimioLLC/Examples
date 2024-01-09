@@ -1,3 +1,0 @@
-C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\netstandard2.0\TextFileReadWrite.csproj.AssemblyReference.cache
-C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\netstandard2.0\TextFileReadWrite.GeneratedMSBuildEditorConfig.editorconfig
-C:\Program Files\Simio LLC\Simio\Examples\UserExtensions\TextFileReadWrite\obj\Debug\netstandard2.0\TextFileReadWrite.csproj.CoreCompileInputs.cache
