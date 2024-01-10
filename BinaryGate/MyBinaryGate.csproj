@@ -31,4 +31,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="PowerShell -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; { $targetFolder = [System.IO.Path]::Combine([Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments), 'SimioUserExtensions'); Write-Host 'Target Folder:' $targetFolder; if (Test-Path -Path $targetFolder) { Write-Host 'Target folder already exists.' } else { Write-Host 'Target folder does not exist. Creating...'; New-Item -ItemType Directory -Force -Path $targetFolder; Write-Host 'Target folder created.' }; foreach ($file in Get-ChildItem \&quot;$(TargetDir)*\&quot; -File) { Copy-Item -Path $file.FullName -Destination $targetFolder; Write-Host 'Copied ' $file.Name ' to ' $targetFolder } }&quot;&#xD;&#xA;&#xD;&#xA;" />
+  </Target>
 </Project>
