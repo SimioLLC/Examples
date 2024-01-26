@@ -114,7 +114,8 @@ namespace DBReadWrite
 
             if (_db == null)
             {
-                string msg = "Provider not found. Available providers are : " + System.Environment.NewLine + string.Join(System.Environment.NewLine, providerNames.ToArray());
+                string providerList = System.Environment.NewLine + string.Join(System.Environment.NewLine, providerNames.ToArray());
+                string msg = $"Provider not found. Available providers are={providerList}";
                 data.ExecutionContext.ExecutionInformation.ReportError(msg);
             }
 
@@ -125,9 +126,9 @@ namespace DBReadWrite
                 {
                     _connection = _db.CreateConnection();
                 }
-                catch(Exception e)
+                catch(Exception ex)
                 {
-                    string msg = String.Format("Exception trying to create the connection object. Message: '{0}'", e.Message);
+                    string msg = $"Exception trying to create the connection object. Message: '{ex.Message}'";
                     data.ExecutionContext.ExecutionInformation.ReportError(msg);
                     _connection = null;
                     return;
@@ -138,9 +139,9 @@ namespace DBReadWrite
                 {
                     _connection.ConnectionString = connectionStringPropValue;
                 }
-                catch(Exception e)
+                catch(Exception ex)
                 {
-                    string msg = String.Format("Exception trying to set connection string '{0}'. Message: '{1}'", connectionStringPropValue, e.Message);
+                    string msg = $"Exception trying to set connection string='{connectionStringPropValue}'. Message: '{ex.Message}'";
                     data.ExecutionContext.ExecutionInformation.ReportError(msg);
                     _connection = null;
                     return;
@@ -150,9 +151,9 @@ namespace DBReadWrite
                 {
                     _connection.Open();
                 }
-                catch(Exception e)
+                catch(Exception ex)
                 {
-                    string msg = String.Format("Exception trying to open database connection. Message: '{0}'", e.Message);
+                    string msg = $"Exception trying to open database connection. Message: '{ex.Message}'";
                     data.ExecutionContext.ExecutionInformation.ReportError(msg);
                     _connection = null;
                     return;

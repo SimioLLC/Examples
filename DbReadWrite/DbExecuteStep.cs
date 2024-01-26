@@ -58,6 +58,9 @@ namespace DBReadWrite
 
             // Reference to the file to write to
             pd = schema.AddElementProperty("DbConnect", DBConnectElementDefinition.MY_ID);
+            pd.DisplayName = "DB Connect Element";
+            pd.Description = "A Simio Element that defines how to connect to the database";
+            pd.Required = true;
 
             // And a format specifier
             pd = schema.AddStringProperty("SQLStatement", String.Empty);

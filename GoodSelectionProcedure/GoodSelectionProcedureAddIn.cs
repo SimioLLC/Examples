@@ -14,7 +14,7 @@ using System.Threading.Tasks;
  * Efficient Ranking and Selection in Parallel Computing Environments
  * By Eric C. Ni, Dragos F. Ciocan, Shane G. Henderson, Susan R. Hunter
  *
- * The original paper can be found at:
+ * The original paper can be found at Cornell's arxiv site (last verified Jan2024):
  * http://arxiv.org/abs/1506.04986
  *
  * Author of the code:
