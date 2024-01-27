@@ -126,15 +126,13 @@ namespace DBReadWrite
 
                     IStateProperty stateprop = (IStateProperty)row.GetProperty("State");
                     IState state = stateprop.GetState(context);
-                    IStringState stringState = state as IStringState;
-                    IDateTimeState dateTimeState = state as IDateTimeState;
 
                     String replaceValue = "";
-                    if (stringState != null)
+                    if (state is IStringState stringState)
                     {
                         replaceValue = stringState.Value;
                     }
-                    else if (dateTimeState != null)
+                    else if (state is IDateTimeState dateTimeState)
                     {
                         replaceValue = dateTimeState.Value.ToString();
                     }
@@ -173,7 +171,7 @@ namespace DBReadWrite
                 }
             }
 
-            context.ExecutionInformation.TraceInformation(String.Format("DbQuery ran using the SQL statement {0} into {1} states", sqlString, numReadIn));
+            context.ExecutionInformation.TraceInformation( $"DbQuery ran using the SQL statement {sqlString} into {numReadIn} states");
 
             // We are done reading, have the token proceed out of the primary exit
             return ExitType.FirstExit;
