@@ -4,6 +4,9 @@ using SimioAPI.Extensions;
 
 namespace DBReadWrite
 {
+    /// <summary>
+    /// A Step to execute a SQL Statement
+    /// </summary>
     class DbExecuteStepDefinition : IStepDefinition
     {
         #region IStepDefinition Members
@@ -46,7 +49,7 @@ namespace DBReadWrite
         /// </summary>
         public int NumberOfExits
         {
-            get { return 1; }
+            get { return 2; }
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace DBReadWrite
             // And a format specifier
             pd = schema.AddStringProperty("SQLStatement", String.Empty);
             pd.DisplayName = "SQL Statement";
-            pd.Description = "SQL Statement...Use @ sign with an index to specify a parameter in the Item repeating property";
+            pd.Description = "SQL Statement using parameters. E.g. DELETE FROM myCustomers WHERE LastName=@paramLastName AND DateOfBirth=@paramDob";
             pd.Required = false;
 
             // A repeat group of values to write out
@@ -90,16 +93,16 @@ namespace DBReadWrite
 
     class DbExecuteStep : IStep
     {
-        IPropertyReaders _props;
-        IPropertyReader _sqlstatementProp;
+        IPropertyReaders _readers;
+        IPropertyReader _prSqlstatements;
         IElementProperty _dbconnectElementProp;
-        IRepeatingPropertyReader _items;
+        IRepeatingPropertyReader _rgprItems;
         public DbExecuteStep(IPropertyReaders properties)
         {
-            _props = properties;
-            _sqlstatementProp = _props.GetProperty("SQLStatement");
-            _dbconnectElementProp = (IElementProperty)_props.GetProperty("DbConnect");
-            _items = (IRepeatingPropertyReader)_props.GetProperty("Items");
+            _readers = properties;
+            _prSqlstatements = _readers.GetProperty("SQLStatement");
+            _dbconnectElementProp = (IElementProperty)_readers.GetProperty("DbConnect");
+            _rgprItems = (IRepeatingPropertyReader)_readers.GetProperty("Items");
         }
 
         #region IStep Members
@@ -109,46 +112,61 @@ namespace DBReadWrite
         /// </summary>
         public ExitType Execute(IStepExecutionContext context)
         {
-            // Get an array of double values from the repeat group's list of expressions
-            object[] paramsArray = new object[_items.GetCount(context)];
-            for (int i = 0; i < _items.GetCount(context); i++)
-            {
-                // The thing returned from GetRow is IDisposable, so we use the using() pattern here
-                using (IPropertyReaders row = _items.GetRow(i, context))
-                {
-                    // Get the expression property
-                    IExpressionPropertyReader expressionProp = row.GetProperty("Expression") as IExpressionPropertyReader;
-                    // Resolve the expression to get the value
-                    paramsArray[i] = expressionProp.GetExpressionValue(context);
-                }
-            }   
-
-            // set DB data
-            DBConnectElement dbconnect = (DBConnectElement)_dbconnectElementProp.GetElement(context);
-            String sqlString = _sqlstatementProp.GetStringValue(context);
-
-            int numberOfRowsAffected = 0;
+            string marker = "Getting expressions for Parameters.";
             try
             {
-                // for each parameter..Backwards to ensure higher parameters are not overwritten by lower parameters
-                for (int i = paramsArray.Length - 1; i >= 0; i--)
+                // Get an array of double values from the repeat group's list of expressions
+                object[] paramsArray = new object[_rgprItems.GetCount(context)];
+                int itemCount = _rgprItems.GetCount(context);
+                for (int i = 0; i < itemCount; i++)
                 {
-                    int paramIndex = i + 1;
-                    String replaceString = "@" + paramIndex.ToString();
-                    sqlString = sqlString.Replace(replaceString, paramsArray[i].ToString());
+                    marker = $"Getting Item# {i} of {itemCount} Items from the Repeating Group.";
+                    // The thing returned from GetRow is IDisposable, so we use the using() pattern here
+                    using (IPropertyReaders row = _rgprItems.GetRow(i, context))
+                    {
+                        // Get the expression property reader
+                        IExpressionPropertyReader prExpression = row.GetProperty("Expression") as IExpressionPropertyReader;
+                        // Use the reader to get the expression value
+                        paramsArray[i] = prExpression.GetExpressionValue(context);
+                        marker += $" Value={paramsArray[i]}";
+                    }
                 }
 
-                numberOfRowsAffected = dbconnect.ExecuteResults(sqlString);
+                // set DB data
+                DBConnectElement dbconnect = (DBConnectElement)_dbconnectElementProp.GetElement(context);
+                String sqlString = _prSqlstatements.GetStringValue(context);
+
+                int numberOfRowsAffected = 0;
+                try
+                {
+                    // for each parameter..Backwards to ensure higher parameters are not overwritten by lower parameters
+                    for (int i = paramsArray.Length - 1; i >= 0; i--)
+                    {
+                        int paramIndex = i + 1;
+                        String replaceString = "@" + paramIndex.ToString();
+                        sqlString = sqlString.Replace(replaceString, paramsArray[i].ToString());
+                        marker = $"Index={i}. SQL={sqlString}";
+                    }
+                    marker = $"Executing SQL={sqlString}";
+                    numberOfRowsAffected = dbconnect.ExecuteResults(sqlString);
+                }
+                catch (FormatException)
+                {
+                    context.ExecutionInformation.ReportError("Bad format provided in Db Execute step.");
+                    return ExitType.AlternateExit;
+                }
+
+                context.ExecutionInformation.TraceInformation($"DbExecute ran using the SQL=[{sqlString}. Rows affected={numberOfRowsAffected}");
+
+                // We are done writing, have the token proceed out of the primary exit
+                return ExitType.FirstExit;
+
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                context.ExecutionInformation.ReportError("Bad format provided in Db Execute step."); 
+                context.ExecutionInformation.ReportError($"Marker={marker}. Error Executing SQL. Err={ex.Message}");
+                return ExitType.AlternateExit;
             }
-
-            context.ExecutionInformation.TraceInformation(String.Format("DbExecute ran using the SQL statement {0} affecting {1} rows", sqlString, numberOfRowsAffected));
-
-            // We are done writing, have the token proceed out of the primary exit
-            return ExitType.FirstExit;
         }
 
         #endregion

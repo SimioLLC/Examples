@@ -161,14 +161,23 @@ namespace DBReadWrite
             }
         }
 
+        /// <summary>
+        /// A Sql Select command that selects one or more rows, which are
+        /// then placed in a SQL DataTable, which is then placed into
+        /// a 2D string array.
+        /// </summary>
+        /// <param name="sqlString"></param>
+        /// <returns></returns>
         public string[,] QueryResults(string sqlString)
         {            
             DbDataAdapter dataAdapter = _db.CreateDataAdapter();
             var command = _connection.CreateCommand();
             command.CommandText = sqlString;
             dataAdapter.SelectCommand = command;
-            DataTable dataTable = new DataTable();
-            dataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            DataTable dataTable = new DataTable
+            {
+                Locale = System.Globalization.CultureInfo.InvariantCulture
+            };
             dataAdapter.Fill(dataTable);
 
             string[,] stringArray = new string[dataTable.Rows.Count, dataTable.Columns.Count];
@@ -191,37 +200,59 @@ namespace DBReadWrite
             return command.ExecuteNonQuery();
         }
 
-        public void WriteTable(string tableName, string[,] stringArray)
+        /// <summary>
+        /// Write the data in the stringArray as a single row into the database.
+        /// Since there is often some form of data conversion, we'll
+        /// wrap the method with a try-catch block and report any exceptions.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="stringArray"></param>
+        internal void WriteTable(string tableName, string[,] stringArray)
         {
-            // setup data adapter
-            DbDataAdapter dataAdapter = _db.CreateDataAdapter();
-            var command = _connection.CreateCommand();
-            command.CommandText = "Select * from " + tableName;
-            dataAdapter.SelectCommand = command;
-
-            // define command builder
-            DbCommandBuilder commandBuilder = _db.CreateCommandBuilder();
-            commandBuilder.DataAdapter = dataAdapter;
-            dataAdapter.InsertCommand = commandBuilder.GetInsertCommand();
-
-            // define data table
-            DataTable dataTable = new DataTable();
-            dataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
-            DataTable[] dataTables = { dataTable };
-            dataAdapter.Fill(1, 1, dataTables);
-
-            // define data row
-            DataRow dataRow = dataTable.NewRow(); 
-            // for each parameter
-            for (int i = 0; i < (stringArray.Length / 2); i++)
+            string marker = $"Create a SQL Command.";
+            try
             {
-                dataRow[stringArray[i, 0]] = stringArray[i, 1];               
+                // setup data adapter
+                DbDataAdapter dataAdapter = _db.CreateDataAdapter();
+                var command = _connection.CreateCommand();
+                command.CommandText = "Select * from " + tableName;
+                dataAdapter.SelectCommand = command;
+
+                // define command builder
+                marker = $"Insert Command={command}";
+                DbCommandBuilder commandBuilder = _db.CreateCommandBuilder();
+                commandBuilder.DataAdapter = dataAdapter;
+                dataAdapter.InsertCommand = commandBuilder.GetInsertCommand();
+
+                // define data table
+                marker = $"Fill DataTable. Command={command}";
+                DataTable dataTable = new DataTable();
+                dataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                DataTable[] dataTables = { dataTable };
+                dataAdapter.Fill(1, 1, dataTables);
+
+                // define data row
+                DataRow dataRow = dataTable.NewRow();
+                // for each parameter
+                for (int i = 0; i < (stringArray.Length / 2); i++)
+                {
+                    string columnName = stringArray[i, 0];
+                    string columnValue = stringArray[i, 1];
+                    marker = $"Assigning Column={columnName}";
+                    dataRow[columnName] = columnValue;
+                }
+
+                marker = $"Adding row and Updating";
+                dataTable.Rows.Add(dataRow);
+                dataAdapter.Update(dataTable);
             }
-            dataTable.Rows.Add(dataRow);
-            dataAdapter.Update(dataTable);
+            catch (Exception ex)
+            {
+                throw new Exception($"Table={tableName}. Marker={marker}. Err={ex.Message}");
+            }
         }
 
-        public string[,] ReadTable(string tableName, string[,] stringArray, string[,] whereArray)
+        internal string[,] ReadTable(string tableName, string[,] stringArray, string[,] whereArray)
         {
             // get column names
             string columnNamesConcat = "";
@@ -234,7 +265,7 @@ namespace DBReadWrite
                 }
                 else
                 {
-                    columnNamesConcat = columnNamesConcat + ", " + stringArray[i, 0];
+                    columnNamesConcat = $"{columnNamesConcat}, {stringArray[i, 0]}";
                 }
             }
 
@@ -245,11 +276,11 @@ namespace DBReadWrite
             {
                 if (i == 0)
                 {
-                    wheresNamesConcat = whereArray[i, 0] + " = " + whereArray[i, 1]; 
+                    wheresNamesConcat = $"{whereArray[i, 0]} = {whereArray[i, 1]}"; 
                 }
                 else
                 {
-                    wheresNamesConcat = wheresNamesConcat + " and " + whereArray[i, 0] + " = " + whereArray[i, 1];
+                    wheresNamesConcat = $"{wheresNamesConcat} AND {whereArray[i, 0]} = {whereArray[i, 1]}";
                 }
             }
 
@@ -259,18 +290,21 @@ namespace DBReadWrite
 
             if (wheresNamesConcat.Length > 0)
             {
-                command.CommandText = "Select " + columnNamesConcat + " from " + tableName + " where " + wheresNamesConcat;
+                command.CommandText = $"SELECT {columnNamesConcat} FROM {tableName} WHERE {wheresNamesConcat}";
             }
             else
             {
-                command.CommandText = "Select " + columnNamesConcat + " from " + tableName;
+                command.CommandText = $"SELECT {columnNamesConcat} FROM {tableName}";
             }
             dataAdapter.SelectCommand = command;
 
-            DataTable dataTable = new DataTable();
-            dataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            DataTable dataTable = new DataTable
+            {
+                Locale = System.Globalization.CultureInfo.InvariantCulture
+            };
             dataAdapter.Fill(dataTable);
 
+            // Put the database column value into the 'value' portaion of the array
             if (dataTable.Rows.Count > 0)
             {
                 for (int col = 0; col < dataTable.Columns.Count; col++)

@@ -108,6 +108,8 @@ namespace DBReadWrite
 
         /// <summary>
         /// Method called when a process token executes the step.
+        /// Write the expressions in the repeating group to the database.
+        /// Each member of the repeating group is a column in the database table.
         /// </summary>
         public ExitType Execute(IStepExecutionContext context)
         {
@@ -116,13 +118,15 @@ namespace DBReadWrite
 
             object[,] paramsArray = new object[numInRepeatGroups, 2];
 
-            // an array of string values from the repeat group's list of strings
+            // Create a 2D array from the Step's repeating group which is called 'Columns'
+            // with each row have two fields: "Column" and "Expression"
+            // Our array will place "Column" at index 0, and the evaluated "Expression" at index 1.
             for (int i = 0; i < numInRepeatGroups; i++)
             {
                 // The thing returned from GetRow is IDisposable, so we use the using() pattern here
                 using (IPropertyReaders columnsRow = _columns.GetRow(i, context))
                 {
-                    // Get the string property
+                    // Get the database column name
                     IPropertyReader column = columnsRow.GetProperty("Column");
                     paramsArray[i, 0] = column.GetStringValue(context);
                     IExpressionPropertyReader expressionProp = columnsRow.GetProperty("Expression") as IExpressionPropertyReader;

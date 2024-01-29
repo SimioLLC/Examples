@@ -60,7 +60,7 @@ namespace DBReadWrite
             // Reference to the file to read from
             pd = schema.AddElementProperty("DbConnect", DBConnectElementDefinition.MY_ID);
             pd.DisplayName = "DB Connect Element";
-            pd.Description = "A Simio Element that defines how to connect to the database";
+            pd.Description = "A User-Defined Element with info on how to connect to the database";
             pd.Required = true;
 
             pd = schema.AddStringProperty("SQLStatement", String.Empty);
@@ -93,13 +93,13 @@ namespace DBReadWrite
         IPropertyReaders _props;
         IPropertyReader _sqlstatementProp;
         IElementProperty _dbconnectElementProp;
-        IRepeatingPropertyReader _states;
+        IRepeatingPropertyReader _rpgReader;
         public DbQueryStep(IPropertyReaders properties)
         {
             _props = properties;
             _sqlstatementProp = _props.GetProperty("SQLStatement");
             _dbconnectElementProp = (IElementProperty)_props.GetProperty("DbConnect");
-            _states = (IRepeatingPropertyReader)_props.GetProperty("States");
+            _rpgReader = (IRepeatingPropertyReader)_props.GetProperty("States");
         }
 
         #region IStep Members
@@ -113,13 +113,13 @@ namespace DBReadWrite
             DBConnectElement dbconnect = (DBConnectElement)_dbconnectElementProp.GetElement(context);
             String sqlString = _sqlstatementProp.GetStringValue(context);
 
-            // Get an array of double values from the repeat group's list of states
-            object[] paramsArray = new object[_states.GetCount(context)];
+            // Get an array of double values from the repeating group's list of states
+            object[] paramsArray = new object[_rpgReader.GetCount(context)];
             // update sqlString based on state value...Backwards to ensure higher parameters are not overwritten by lower parameters
-            for (int i = _states.GetCount(context) - 1; i >= 0; i--)
+            for (int i = _rpgReader.GetCount(context) - 1; i >= 0; i--)
             {
                 // The thing returned from GetRow is IDisposable, so we use the using() pattern here
-                using (IPropertyReaders row = _states.GetRow(i, context))
+                using (IPropertyReaders row = _rpgReader.GetRow(i, context))
                 {
                     int paramIndex = i + 1;
                     String replaceString = "@" + paramIndex.ToString();
@@ -147,20 +147,20 @@ namespace DBReadWrite
                 }
             }
 
-            // Tokenize the input
-            string[,] parts = dbconnect.QueryResults(sqlString);
+            // A SQL datatable that has been fetched from the database
+            string[,] dataTable = dbconnect.QueryResults(sqlString);
 
             int numReadIn = 0;
-            for (int i = 0; i < parts.Length && i < _states.GetCount(context); i++)
+            for (int i = 0; i < dataTable.Length && i < _rpgReader.GetCount(context); i++)
             {
                 // The thing returned from GetRow is IDisposable, so we use the using() pattern here
-                using (IPropertyReaders row = _states.GetRow(i, context))
+                using (IPropertyReaders row = _rpgReader.GetRow(i, context))
                 {
                     // Get the state property out of the i-th tuple of the repeat group
                     IStateProperty stateprop = (IStateProperty)row.GetProperty("State");
                     // Resolve the property value to get the runtime state
                     IState state = stateprop.GetState(context);
-                    string part = parts[0,i];
+                    string part = dataTable[0,i];
 
                     if (TryAsNumericState(state, part) ||
                         TryAsDateTimeState(state, part) ||
