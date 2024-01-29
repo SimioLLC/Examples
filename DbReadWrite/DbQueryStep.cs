@@ -177,6 +177,16 @@ namespace DBReadWrite
             return ExitType.FirstExit;
         }
 
+        /// <summary>
+        /// Given a state variable and a string rawValue:
+        /// * First see if the state variable is of type 'real'.
+        /// * If so, then see if it can be parsed into a double or a boolean.
+        /// * If it can be parsed then set the state's value and return true
+        /// Note that "True" is changed to 1.0 and "False" to 0.0
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="rawValue"></param>
+        /// <returns></returns>
         bool TryAsNumericState(IState state, string rawValue)
         {
             IRealState realState = state as IRealState;
