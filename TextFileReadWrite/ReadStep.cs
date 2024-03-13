@@ -22,7 +22,7 @@ namespace CustomSimioStep
         /// </summary>
         public string Description
         {
-            get { return "The Read step may be used to read values from an input file into state variables. The user defined File element is used to specify the file."; }
+            get { return "The Read step may be used to read values from an input file into state variables. Each call reads the next line. The user defined MyFile element is used to specify the file."; }
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace CustomSimioStep
         {
             get { return MY_ID; }
         }
-        static readonly Guid MY_ID = new Guid("{B85EBBEB-554E-4148-854F-D9420CD0C759}");
+        static readonly Guid MY_ID = new Guid("{B85EBBEB-554E-4148-854F-D9420CD0C759}"); // Jan2024/DanH
 
         /// <summary>
         /// Property returning the number of exits out of the step. Can return either 1 or 2. 
@@ -60,9 +60,9 @@ namespace CustomSimioStep
             // Reference to the file to read from
             pd = schema.AddElementProperty("File", FileElementDefinition.MY_ID);
 
-            pd = schema.AddStringProperty("Separator", String.Empty);
-            pd.Description = "The character that seperates the numeric values in the file";
-            pd.Required = false;
+            pd = schema.AddStringProperty("Delimiter", ",");
+            pd.Description = "The character that separates the values in the file";
+            pd.Required = true;
 
             // A repeat group of states to read into
             IRepeatGroupPropertyDefinition parts = schema.AddRepeatGroupProperty("States");
@@ -84,18 +84,27 @@ namespace CustomSimioStep
         #endregion
     }
 
+    /// <summary>
+    /// A read Step gets information from a delimited text file and puts the value
+    /// into a collection (Repeating Group) of State variables.
+    /// Each time the Step is called, a new line is read in.
+    /// </summary>
     class ReadStep : IStep
     {
         IPropertyReaders _props;
-        IPropertyReader _seperatorProp;
-        IElementProperty _fileProp;
-        IRepeatingPropertyReader _states;
+        IPropertyReader _prDelimiter;
+        IElementProperty _prFileElement;
+        IRepeatingPropertyReader _prStates;
+
+        int _lineNbr = 0;
+
         public ReadStep(IPropertyReaders properties)
         {
+            // For efficiency, get the property readers here in the constructor
             _props = properties;
-            _seperatorProp = _props.GetProperty("Separator");
-            _fileProp = (IElementProperty)_props.GetProperty("File");
-            _states = (IRepeatingPropertyReader)_props.GetProperty("States");
+            _prDelimiter = _props.GetProperty("Delimiter");
+            _prFileElement = (IElementProperty)_props.GetProperty("File");
+            _prStates = (IRepeatingPropertyReader)_props.GetProperty("States");
         }
 
         #region IStep Members
@@ -106,8 +115,8 @@ namespace CustomSimioStep
         public ExitType Execute(IStepExecutionContext context)
         {
             // Get the file
-            FileElement file = (FileElement)_fileProp.GetElement(context);
-            if (file == null)
+            FileElement fileElement = (FileElement)_prFileElement.GetElement(context);
+            if (fileElement == null)
             {
                 context.ExecutionInformation.ReportError("File element is null.  Makes sure FilePath is defined correctly.");
             }
@@ -116,37 +125,47 @@ namespace CustomSimioStep
                 // Try to read the next line
                 string line = null;
 
-                if (file.Reader != null)
-                    line = file.Reader.ReadLine();
+                if (fileElement.Reader != null)
+                    line = fileElement.Reader.ReadLine();
 
                 // If we haven't reached the end of the file yet
                 if (line != null)
                 {
+                    _lineNbr++;
+
                     // Tokenize the input
-                    string[] parts = line.Split(new string[] { _seperatorProp.GetStringValue(context) }, StringSplitOptions.None);
+                    string[] tokens = line.Split(new string[] { _prDelimiter.GetStringValue(context) }, StringSplitOptions.None);
 
                     int numReadIn = 0;
-                    for (int i = 0; i < parts.Length && i < _states.GetCount(context); i++)
+                    int failedToParse = 0;
+
+                    for (int i = 0; i < tokens.Length && i < _prStates.GetCount(context); i++)
                     {
                         // The thing returned from GetRow is IDisposable, so we use the using() pattern here
-                        using (IPropertyReaders row = _states.GetRow(i, context))
+                        using (IPropertyReaders row = _prStates.GetRow(i, context))
                         {
                             // Get the state property out of the i-th tuple of the repeat group
                             IStateProperty stateprop = (IStateProperty)row.GetProperty("State");
                             // Resolve the property value to get the runtime state
                             IState state = stateprop.GetState(context);
-                            string part = parts[i];
+                            string token = tokens[i];
 
-                            if (TryAsNumericState(state, part) ||
-                                TryAsDateTimeState(state, part) ||
-                                TryAsStringState(state, part))
+                            if (TryAsNumericState(state, token) ||
+                                TryAsDateTimeState(state, token) ||
+                                TryAsStringState(state, token))
                             {
                                 numReadIn++;
+                            }
+                            else
+                            {
+                                context.ExecutionInformation.TraceInformation($"Line#={_lineNbr} Token#={i}:Could not parse token={token}");
+                                failedToParse++;
                             }
                         }
                     }
 
-                    context.ExecutionInformation.TraceInformation(String.Format("Read in the line \"{0}\" from file {1} into {2} states", line, (_fileProp as IPropertyReader).GetStringValue(context), numReadIn));
+                    string file = (_prFileElement as IPropertyReader).GetStringValue(context);
+                    context.ExecutionInformation.TraceInformation($"Read in the line#{_lineNbr}=[{line}] from file {file} into {numReadIn} states");
                 }
             }
 
@@ -154,6 +173,13 @@ namespace CustomSimioStep
             return ExitType.FirstExit;
         }
 
+        /// <summary>
+        /// A utility routine to interpret the raw string as numeric (double).
+        /// state must implement IRealState, and True/False resolve to 1.0/0.0
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="rawValue"></param>
+        /// <returns></returns>
         bool TryAsNumericState(IState state, string rawValue)
         {
             IRealState realState = state as IRealState;
@@ -180,6 +206,13 @@ namespace CustomSimioStep
             return false; // incoming value can't be interpreted as a real.
         }
 
+        /// <summary>
+        /// Decode the raw string to a DateTime state.
+        /// If raw is a double, then assume it is simulation time (hours).
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="rawValue"></param>
+        /// <returns></returns>
         bool TryAsDateTimeState(IState state, string rawValue)
         {
             IDateTimeState dateTimeState = state as IDateTimeState;

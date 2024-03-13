@@ -75,18 +75,24 @@ namespace BinaryGate
         #endregion
     }
 
+    /// <summary>
+    /// The Step where Entities are stopped or continue based on the Gate.
+    /// </summary>
     class PassThruStep : IStep
     {
         IPropertyReaders _properties;
-        IElementProperty _gateProp;
+        IElementProperty _prGate; // Get element PropertyReader
+
         public PassThruStep(IPropertyReaders properties)
         {
             _properties = properties;
-            _gateProp = (IElementProperty)_properties.GetProperty("Gate");
+            _prGate = (IElementProperty)_properties.GetProperty("Gate");
         }
 
-        // A class to hold the information for a token while waiting for a gate to open, 
-        //  see the Execute() logic below.
+        /// <summary>
+        /// A class to hold the information for a token while waiting for a gate to open, 
+        /// Its method OnGateOpened is called when the gate is opened.
+        /// </summary>
         class WaitForGateOpen
         {
             IStepExecutionContext _context;
@@ -114,11 +120,11 @@ namespace BinaryGate
         public ExitType Execute(IStepExecutionContext context)
         {
             // Get the gate
-            GateElement gate = (GateElement)_gateProp.GetElement(context);
+            GateElement gate = (GateElement)_prGate.GetElement(context);
 
             if (gate.IsOpen)
             {
-                context.ExecutionInformation.TraceInformation($"Passing through gate {(_gateProp as IPropertyReader).GetStringValue(context)}");
+                context.ExecutionInformation.TraceInformation($"Passing through gate {(_prGate as IPropertyReader).GetStringValue(context)}");
 
                 // If the gate is open we can just proceed to the next step
                 return ExitType.FirstExit;
@@ -133,7 +139,7 @@ namespace BinaryGate
                 //  reference to the temporary WaitForGateOpen object, causing it to be collected.
                 gate.Opened += new WaitForGateOpen(context).OnGateOpened;
 
-                context.ExecutionInformation.TraceInformation($"Waiting for gate {(_gateProp as IPropertyReader).GetStringValue(context)} to Open");
+                context.ExecutionInformation.TraceInformation($"Waiting for gate {(_prGate as IPropertyReader).GetStringValue(context)} to Open");
 
                 // Since we are waiting to something to happen, we don't want the token to proceed
                 //  to the next step, so return Wait here.

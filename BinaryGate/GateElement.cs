@@ -101,7 +101,7 @@ namespace BinaryGate
                 Opened(this, EventArgs.Empty);
 
             // Once we fire, we remove the listeners. More subscriptions to
-            //  the event will from from the PassThru step
+            //  the event will fire from the PassThru step
             Opened = null;
         }
 

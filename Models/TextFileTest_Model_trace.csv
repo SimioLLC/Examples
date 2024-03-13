@@ -1,0 +1,655 @@
+Time(Hours),EntityID,ObjectName,ProcessID,StepName,Action
+0,--,--,--,--,System initialization completed.
+0,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0' Hours.
+0,--,--,--,--,Firing event 'Source1.EntityArrivals.Event'.
+0,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0.00655278052637456' Hours.
+0,Source1,Source1,0.OnEntityArrival,[Begin],Process 'Source1.OnEntityArrival' execution started.
+0,Source1,Source1,0.OnEntityArrival,[Create] Entities,Creating '1' new object(s) of entity type 'DefaultEntity'.
+0,Source1,Source1,0.OnEntityArrival,[Create] Entities,Created object 'DefaultEntity.11'.
+0,DefaultEntity.11,Source1,1.OnEntityArrival,[Transfer] ToProcessing,Entity 'DefaultEntity.11' transferring from '[FreeSpace] Source1' into station 'Source1.Processing'.
+0,Source1,Source1,0.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0,DefaultEntity.11,Source1,2.OnEnteredProcessing,[Begin],Process 'Source1.OnEnteredProcessing' execution started.
+0,DefaultEntity.11,Source1,2.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.11' ending transfer into station 'Source1.Processing'.
+0,DefaultEntity.11,Source1,2.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.11' transferring from '[Station] Source1.Processing' into station 'Source1.OutputBuffer'.
+0,DefaultEntity.11,Source1,1.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0,DefaultEntity.11,Source1,0.OnEnteredOutputBuffer,[Begin],Process 'Source1.OnEnteredOutputBuffer' execution started.
+0,DefaultEntity.11,Source1,0.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.11' ending transfer into station 'Source1.OutputBuffer'.
+0,DefaultEntity.11,Source1,0.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.11' transferring from '[Station] Source1.OutputBuffer' into node 'Output@Source1'.
+0,DefaultEntity.11,Output@Source1,1.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution started.
+0,DefaultEntity.11,Output@Source1,1.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Source1.Entered'.
+0,DefaultEntity.11,Output@Source1,1.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.11' transferring from '[Node] Output@Source1' onto link 'Path1'.
+0,DefaultEntity.11,Path1,3.OnEntered,[Begin],Process 'Path1.OnEntered' execution started.
+0,DefaultEntity.11,Path1,3.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.11.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0,DefaultEntity.11,Path1,3.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.11' ending transfer onto link 'Path1'.
+0,DefaultEntity.11,Path1,3.OnEntered,[End],Process 'Path1.OnEntered' execution ended.
+0,DefaultEntity.11,Source1,2.OnEnteredProcessing,[End],Process 'Source1.OnEnteredProcessing' execution ended.
+0,DefaultEntity.11,Source1,0.OnEnteredOutputBuffer,[End],Process 'Source1.OnEnteredOutputBuffer' execution ended.
+0,DefaultEntity.11,Output@Source1,1.OnEnteredFromAssociatedObject,[End],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution ended.
+9.92063492063492E-05,DefaultEntity.11,Output@Source1,1.OnExited,[Begin],Process 'Output@Source1.OnExited' execution started.
+9.92063492063492E-05,DefaultEntity.11,Output@Source1,1.OnExited,[Fire] ExitedEvent,Firing event 'Output@Source1.Exited'.
+9.92063492063492E-05,DefaultEntity.11,Output@Source1,1.OnExited,[End],Process 'Output@Source1.OnExited' execution ended.
+0.00108730158730159,DefaultEntity.11,Path1,1.OnReachedEnd,[Begin],Process 'Path1.OnReachedEnd' execution started.
+0.00108730158730159,DefaultEntity.11,Path1,1.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.11' transferring from '[EndOfLink] Path1' into node 'Input@Server1'.
+0.00108730158730159,DefaultEntity.11,Input@Server1,0.OnEnteredToAssociatedObject,[Begin],Process 'Input@Server1.OnEnteredToAssociatedObject' execution started.
+0.00108730158730159,DefaultEntity.11,Input@Server1,0.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Server1.Entered'.
+0.00108730158730159,DefaultEntity.11,Input@Server1,0.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.11' transferring from '[Node] Input@Server1' into object 'Server1'.
+0.00108730158730159,DefaultEntity.11,Input@Server1,0.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.11' transferring from '[Node] Input@Server1' into station 'Server1.InputBuffer'.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Begin],Process 'Server1.OnEnteredInputBuffer' execution started.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.11' ending transfer into station 'Server1.InputBuffer'.
+0.00108730158730159,DefaultEntity.11,Input@Server1,3.OnExited,[Begin],Process 'Input@Server1.OnExited' execution started.
+0.00108730158730159,DefaultEntity.11,Input@Server1,3.OnExited,[Fire] ExitedEvent,Firing event 'Input@Server1.Exited'.
+0.00108730158730159,DefaultEntity.11,Input@Server1,3.OnExited,[End],Process 'Input@Server1.OnExited' execution ended.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.11' waiting to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00108730158730159,DefaultEntity.11,Path1,1.OnReachedEnd,[End],Process 'Path1.OnReachedEnd' execution ended.
+0.00108730158730159,DefaultEntity.11,Input@Server1,0.OnEnteredToAssociatedObject,[End],Process 'Input@Server1.OnEnteredToAssociatedObject' execution ended.
+0.00108730158730159,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.11' checking availability to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.11' checking availability to seize '1' capacity unit(s) of resource 'Server1’.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.11' found ‘1’ currently available capacity unit(s) of resource 'Server1’.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.11' found '1' currently available resource(s) of resource type '[ParentObject] Server1'.
+0.00108730158730159,--,--,--,--,Resource 'Server1' selecting object 'DefaultEntity.11' waiting at rank position '1' in allocation queue which contains '1' item(s).
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.11' seized '1' capacity unit(s) of resource 'Server1'.
+0.00108730158730159,--,--,--,--,Changing from AutoState 'Starved' to 'Busy' on resource 'Server1'.
+0.00108730158730159,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '0'.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.11' completed seize of '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00108730158730159,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.00108730158730159,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[Transfer] ToProcessing,Entity 'DefaultEntity.11' transferring from '[Station] Server1.InputBuffer' into station 'Server1.Processing'.
+0.00108730158730159,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.00108730158730159,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.00108730158730159,DefaultEntity.11,Server1,0.OnEnteredProcessing,[Begin],Process 'Server1.OnEnteredProcessing' execution started.
+0.00108730158730159,DefaultEntity.11,Server1,0.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.11' ending transfer into station 'Server1.Processing'.
+0.00108730158730159,DefaultEntity.11,Server1,0.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token branching on condition 'ProcessType==Enum.TaskProcessType.SpecificTime'.
+0.00108730158730159,DefaultEntity.11,Server1,0.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token sent to 'True' exit.
+0.00108730158730159,DefaultEntity.11,Server1,0.OnEnteredProcessing,[Delay] ProcessingTime,Delaying token for '0.00353746818799988' Hours until time '0.00462476977530147' Hours. Delay multiplier was '1'.
+0.00108730158730159,DefaultEntity.11,Server1,2.OnEnteredInputBuffer,[End],Process 'Server1.OnEnteredInputBuffer' execution ended.
+0.00462476977530147,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.00462476977530147,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.00462476977530147,DefaultEntity.11,Server1,0.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.11' transferring from '[Station] Server1.Processing' into station 'Server1.OutputBuffer'.
+0.00462476977530147,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.00462476977530147,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.00462476977530147,DefaultEntity.11,Server1,2.OnEnteredOutputBuffer,[Begin],Process 'Server1.OnEnteredOutputBuffer' execution started.
+0.00462476977530147,DefaultEntity.11,Server1,2.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.11' ending transfer into station 'Server1.OutputBuffer'.
+0.00462476977530147,DefaultEntity.11,Server1,2.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.11' attempting to release '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00462476977530147,DefaultEntity.11,Server1,2.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.11' released '1' capacity unit(s) of resource 'Server1'.
+0.00462476977530147,--,--,--,--,Changing from AutoState 'Busy' to 'Starved' on resource 'Server1'.
+0.00462476977530147,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '0'. Previous value was '1'.
+0.00462476977530147,DefaultEntity.11,Server1,2.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.11' transferring from '[Station] Server1.OutputBuffer' into node 'Output@Server1'.
+0.00462476977530147,DefaultEntity.11,Output@Server1,1.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution started.
+0.00462476977530147,DefaultEntity.11,Output@Server1,1.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Server1.Entered'.
+0.00462476977530147,DefaultEntity.11,Output@Server1,1.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.11' transferring from '[Node] Output@Server1' onto link 'Path2'.
+0.00462476977530147,DefaultEntity.11,Path2,3.OnEntered,[Begin],Process 'Path2.OnEntered' execution started.
+0.00462476977530147,DefaultEntity.11,Path2,3.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.11.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.00462476977530147,DefaultEntity.11,Path2,3.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.11' ending transfer onto link 'Path2'.
+0.00462476977530147,DefaultEntity.11,Path2,3.OnEntered,[End],Process 'Path2.OnEntered' execution ended.
+0.00462476977530147,DefaultEntity.11,Server1,0.OnEnteredProcessing,[End],Process 'Server1.OnEnteredProcessing' execution ended.
+0.00462476977530147,DefaultEntity.11,Server1,2.OnEnteredOutputBuffer,[End],Process 'Server1.OnEnteredOutputBuffer' execution ended.
+0.00462476977530147,DefaultEntity.11,Output@Server1,1.OnEnteredFromAssociatedObject,[End],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution ended.
+0.00472397612450781,DefaultEntity.11,Output@Server1,1.OnExited,[Begin],Process 'Output@Server1.OnExited' execution started.
+0.00472397612450781,DefaultEntity.11,Output@Server1,1.OnExited,[Fire] ExitedEvent,Firing event 'Output@Server1.Exited'.
+0.00472397612450781,DefaultEntity.11,Output@Server1,1.OnExited,[Execute] ExitedAddOnProcess,Executing process 'Output_Server1_Exited'.
+0.00472397612450781,DefaultEntity.11,Model,2.Output_Server1_Exited,[Begin],Process 'Output_Server1_Exited' execution started.
+0.00472397612450781,DefaultEntity.11,Model,2.Output_Server1_Exited,[MyWriteText] MyWriteText1,"Writing=[0.00472397612450781,DefaultEntity.11,0,0.00472397612450781,] to file=c:\temp\MyOutTestFile.txt"
+0.00472397612450781,DefaultEntity.11,Model,2.Output_Server1_Exited,[MyReadText] MyReadText1,"Read in the line#28=[Line1Col1, Col2, Col3] from file MyInTextFile1 into 3 states"
+0.00472397612450781,DefaultEntity.11,Model,2.Output_Server1_Exited,[End],Process 'Output_Server1_Exited' execution ended.
+0.00472397612450781,DefaultEntity.11,Output@Server1,1.OnExited,[End],Process 'Output@Server1.OnExited' execution ended.
+0.00597397612450781,DefaultEntity.11,Path2,1.OnReachedEnd,[Begin],Process 'Path2.OnReachedEnd' execution started.
+0.00597397612450781,DefaultEntity.11,Path2,1.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.11' transferring from '[EndOfLink] Path2' into node 'Input@Sink1'.
+0.00597397612450781,DefaultEntity.11,Input@Sink1,2.OnEnteredToAssociatedObject,[Begin],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution started.
+0.00597397612450781,DefaultEntity.11,Input@Sink1,2.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Sink1.Entered'.
+0.00597397612450781,DefaultEntity.11,Input@Sink1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.11' transferring from '[Node] Input@Sink1' into object 'Sink1'.
+0.00597397612450781,DefaultEntity.11,Input@Sink1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.11' transferring from '[Node] Input@Sink1' into station 'Sink1.InputBuffer'.
+0.00597397612450781,DefaultEntity.11,Sink1,0.OnEnteredInputBuffer,[Begin],Process 'Sink1.OnEnteredInputBuffer' execution started.
+0.00597397612450781,DefaultEntity.11,Sink1,0.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.11' ending transfer into station 'Sink1.InputBuffer'.
+0.00597397612450781,DefaultEntity.11,Input@Sink1,3.OnExited,[Begin],Process 'Input@Sink1.OnExited' execution started.
+0.00597397612450781,DefaultEntity.11,Input@Sink1,3.OnExited,[Fire] ExitedEvent,Firing event 'Input@Sink1.Exited'.
+0.00597397612450781,DefaultEntity.11,Input@Sink1,3.OnExited,[End],Process 'Input@Sink1.OnExited' execution ended.
+0.00597397612450781,DefaultEntity.11,Sink1,0.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording ‘1’ observation value(s) of type ‘Expression’ for tally statistic ‘Sink1.TimeInSystem’.
+0.00597397612450781,DefaultEntity.11,Sink1,0.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording observation value '0.00597397612450781' Hours for tally statistic 'Sink1.TimeInSystem'.
+0.00597397612450781,DefaultEntity.11,Sink1,0.OnEnteredInputBuffer,[Destroy] Entity,Destroying object 'DefaultEntity.11'.
+0.00597397612450781,--,--,--,--,Object 'DefaultEntity.11' destroyed.
+0.00597397612450781, ,Sink1,0.OnEnteredInputBuffer,[End],Process 'Sink1.OnEnteredInputBuffer' execution ended.
+0.00597397612450781, ,Path2,1.OnReachedEnd,[End],Process 'Path2.OnReachedEnd' execution ended.
+0.00597397612450781, ,Input@Sink1,2.OnEnteredToAssociatedObject,[End],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution ended.
+0.00655278052637456,--,--,--,--,Firing event 'Source1.EntityArrivals.Event'.
+0.00655278052637456,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0.00103194614643843' Hours.
+0.00655278052637456,Source1,Source1,2.OnEntityArrival,[Begin],Process 'Source1.OnEntityArrival' execution started.
+0.00655278052637456,Source1,Source1,2.OnEntityArrival,[Create] Entities,Creating '1' new object(s) of entity type 'DefaultEntity'.
+0.00655278052637456,Source1,Source1,2.OnEntityArrival,[Create] Entities,Created object 'DefaultEntity.12'.
+0.00655278052637456,DefaultEntity.12,Source1,1.OnEntityArrival,[Transfer] ToProcessing,Entity 'DefaultEntity.12' transferring from '[FreeSpace] Source1' into station 'Source1.Processing'.
+0.00655278052637456,Source1,Source1,2.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.00655278052637456,DefaultEntity.12,Source1,0.OnEnteredProcessing,[Begin],Process 'Source1.OnEnteredProcessing' execution started.
+0.00655278052637456,DefaultEntity.12,Source1,0.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.12' ending transfer into station 'Source1.Processing'.
+0.00655278052637456,DefaultEntity.12,Source1,0.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.12' transferring from '[Station] Source1.Processing' into station 'Source1.OutputBuffer'.
+0.00655278052637456,DefaultEntity.12,Source1,1.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.00655278052637456,DefaultEntity.12,Source1,2.OnEnteredOutputBuffer,[Begin],Process 'Source1.OnEnteredOutputBuffer' execution started.
+0.00655278052637456,DefaultEntity.12,Source1,2.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.12' ending transfer into station 'Source1.OutputBuffer'.
+0.00655278052637456,DefaultEntity.12,Source1,2.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.12' transferring from '[Station] Source1.OutputBuffer' into node 'Output@Source1'.
+0.00655278052637456,DefaultEntity.12,Output@Source1,1.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution started.
+0.00655278052637456,DefaultEntity.12,Output@Source1,1.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Source1.Entered'.
+0.00655278052637456,DefaultEntity.12,Output@Source1,1.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.12' transferring from '[Node] Output@Source1' onto link 'Path1'.
+0.00655278052637456,DefaultEntity.12,Path1,3.OnEntered,[Begin],Process 'Path1.OnEntered' execution started.
+0.00655278052637456,DefaultEntity.12,Path1,3.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.12.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.00655278052637456,DefaultEntity.12,Path1,3.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.12' ending transfer onto link 'Path1'.
+0.00655278052637456,DefaultEntity.12,Path1,3.OnEntered,[End],Process 'Path1.OnEntered' execution ended.
+0.00655278052637456,DefaultEntity.12,Source1,0.OnEnteredProcessing,[End],Process 'Source1.OnEnteredProcessing' execution ended.
+0.00655278052637456,DefaultEntity.12,Source1,2.OnEnteredOutputBuffer,[End],Process 'Source1.OnEnteredOutputBuffer' execution ended.
+0.00655278052637456,DefaultEntity.12,Output@Source1,1.OnEnteredFromAssociatedObject,[End],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution ended.
+0.00665198687558091,DefaultEntity.12,Output@Source1,1.OnExited,[Begin],Process 'Output@Source1.OnExited' execution started.
+0.00665198687558091,DefaultEntity.12,Output@Source1,1.OnExited,[Fire] ExitedEvent,Firing event 'Output@Source1.Exited'.
+0.00665198687558091,DefaultEntity.12,Output@Source1,1.OnExited,[End],Process 'Output@Source1.OnExited' execution ended.
+0.00758472667281298,--,--,--,--,Firing event 'Source1.EntityArrivals.Event'.
+0.00758472667281298,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0.00277133702366575' Hours.
+0.00758472667281298,Source1,Source1,1.OnEntityArrival,[Begin],Process 'Source1.OnEntityArrival' execution started.
+0.00758472667281298,Source1,Source1,1.OnEntityArrival,[Create] Entities,Creating '1' new object(s) of entity type 'DefaultEntity'.
+0.00758472667281298,Source1,Source1,1.OnEntityArrival,[Create] Entities,Created object 'DefaultEntity.13'.
+0.00758472667281298,DefaultEntity.13,Source1,2.OnEntityArrival,[Transfer] ToProcessing,Entity 'DefaultEntity.13' transferring from '[FreeSpace] Source1' into station 'Source1.Processing'.
+0.00758472667281298,Source1,Source1,1.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.00758472667281298,DefaultEntity.13,Source1,0.OnEnteredProcessing,[Begin],Process 'Source1.OnEnteredProcessing' execution started.
+0.00758472667281298,DefaultEntity.13,Source1,0.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.13' ending transfer into station 'Source1.Processing'.
+0.00758472667281298,DefaultEntity.13,Source1,0.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.13' transferring from '[Station] Source1.Processing' into station 'Source1.OutputBuffer'.
+0.00758472667281298,DefaultEntity.13,Source1,2.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.00758472667281298,DefaultEntity.13,Source1,1.OnEnteredOutputBuffer,[Begin],Process 'Source1.OnEnteredOutputBuffer' execution started.
+0.00758472667281298,DefaultEntity.13,Source1,1.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.13' ending transfer into station 'Source1.OutputBuffer'.
+0.00758472667281298,DefaultEntity.13,Source1,1.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.13' transferring from '[Station] Source1.OutputBuffer' into node 'Output@Source1'.
+0.00758472667281298,DefaultEntity.13,Output@Source1,2.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution started.
+0.00758472667281298,DefaultEntity.13,Output@Source1,2.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Source1.Entered'.
+0.00758472667281298,DefaultEntity.13,Output@Source1,2.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.13' transferring from '[Node] Output@Source1' onto link 'Path1'.
+0.00758472667281298,DefaultEntity.13,Path1,3.OnEntered,[Begin],Process 'Path1.OnEntered' execution started.
+0.00758472667281298,DefaultEntity.13,Path1,3.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.13.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.00758472667281298,DefaultEntity.13,Path1,3.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.13' ending transfer onto link 'Path1'.
+0.00758472667281298,DefaultEntity.13,Path1,3.OnEntered,[End],Process 'Path1.OnEntered' execution ended.
+0.00758472667281298,DefaultEntity.13,Source1,0.OnEnteredProcessing,[End],Process 'Source1.OnEnteredProcessing' execution ended.
+0.00758472667281298,DefaultEntity.13,Source1,1.OnEnteredOutputBuffer,[End],Process 'Source1.OnEnteredOutputBuffer' execution ended.
+0.00758472667281298,DefaultEntity.13,Output@Source1,2.OnEnteredFromAssociatedObject,[End],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution ended.
+0.00764008211367614,DefaultEntity.12,Path1,2.OnReachedEnd,[Begin],Process 'Path1.OnReachedEnd' execution started.
+0.00764008211367614,DefaultEntity.12,Path1,2.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.12' transferring from '[EndOfLink] Path1' into node 'Input@Server1'.
+0.00764008211367614,DefaultEntity.12,Input@Server1,1.OnEnteredToAssociatedObject,[Begin],Process 'Input@Server1.OnEnteredToAssociatedObject' execution started.
+0.00764008211367614,DefaultEntity.12,Input@Server1,1.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Server1.Entered'.
+0.00764008211367614,DefaultEntity.12,Input@Server1,1.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.12' transferring from '[Node] Input@Server1' into object 'Server1'.
+0.00764008211367614,DefaultEntity.12,Input@Server1,1.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.12' transferring from '[Node] Input@Server1' into station 'Server1.InputBuffer'.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Begin],Process 'Server1.OnEnteredInputBuffer' execution started.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.12' ending transfer into station 'Server1.InputBuffer'.
+0.00764008211367614,DefaultEntity.12,Input@Server1,3.OnExited,[Begin],Process 'Input@Server1.OnExited' execution started.
+0.00764008211367614,DefaultEntity.12,Input@Server1,3.OnExited,[Fire] ExitedEvent,Firing event 'Input@Server1.Exited'.
+0.00764008211367614,DefaultEntity.12,Input@Server1,3.OnExited,[End],Process 'Input@Server1.OnExited' execution ended.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.12' waiting to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00764008211367614,DefaultEntity.12,Path1,2.OnReachedEnd,[End],Process 'Path1.OnReachedEnd' execution ended.
+0.00764008211367614,DefaultEntity.12,Input@Server1,1.OnEnteredToAssociatedObject,[End],Process 'Input@Server1.OnEnteredToAssociatedObject' execution ended.
+0.00764008211367614,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.12' checking availability to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.12' checking availability to seize '1' capacity unit(s) of resource 'Server1’.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.12' found ‘1’ currently available capacity unit(s) of resource 'Server1’.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.12' found '1' currently available resource(s) of resource type '[ParentObject] Server1'.
+0.00764008211367614,--,--,--,--,Resource 'Server1' selecting object 'DefaultEntity.12' waiting at rank position '1' in allocation queue which contains '1' item(s).
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.12' seized '1' capacity unit(s) of resource 'Server1'.
+0.00764008211367614,--,--,--,--,Changing from AutoState 'Starved' to 'Busy' on resource 'Server1'.
+0.00764008211367614,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '0'.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.12' completed seize of '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00764008211367614,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.00764008211367614,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[Transfer] ToProcessing,Entity 'DefaultEntity.12' transferring from '[Station] Server1.InputBuffer' into station 'Server1.Processing'.
+0.00764008211367614,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.00764008211367614,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.00764008211367614,DefaultEntity.12,Server1,1.OnEnteredProcessing,[Begin],Process 'Server1.OnEnteredProcessing' execution started.
+0.00764008211367614,DefaultEntity.12,Server1,1.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.12' ending transfer into station 'Server1.Processing'.
+0.00764008211367614,DefaultEntity.12,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token branching on condition 'ProcessType==Enum.TaskProcessType.SpecificTime'.
+0.00764008211367614,DefaultEntity.12,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token sent to 'True' exit.
+0.00764008211367614,DefaultEntity.12,Server1,1.OnEnteredProcessing,[Delay] ProcessingTime,Delaying token for '0.00351286918068413' Hours until time '0.0111529512943603' Hours. Delay multiplier was '1'.
+0.00764008211367614,DefaultEntity.12,Server1,0.OnEnteredInputBuffer,[End],Process 'Server1.OnEnteredInputBuffer' execution ended.
+0.00768393302201933,DefaultEntity.13,Output@Source1,0.OnExited,[Begin],Process 'Output@Source1.OnExited' execution started.
+0.00768393302201933,DefaultEntity.13,Output@Source1,0.OnExited,[Fire] ExitedEvent,Firing event 'Output@Source1.Exited'.
+0.00768393302201933,DefaultEntity.13,Output@Source1,0.OnExited,[End],Process 'Output@Source1.OnExited' execution ended.
+0.00867202826011457,DefaultEntity.13,Path1,0.OnReachedEnd,[Begin],Process 'Path1.OnReachedEnd' execution started.
+0.00867202826011457,DefaultEntity.13,Path1,0.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.13' transferring from '[EndOfLink] Path1' into node 'Input@Server1'.
+0.00867202826011457,DefaultEntity.13,Input@Server1,2.OnEnteredToAssociatedObject,[Begin],Process 'Input@Server1.OnEnteredToAssociatedObject' execution started.
+0.00867202826011457,DefaultEntity.13,Input@Server1,2.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Server1.Entered'.
+0.00867202826011457,DefaultEntity.13,Input@Server1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.13' transferring from '[Node] Input@Server1' into object 'Server1'.
+0.00867202826011457,DefaultEntity.13,Input@Server1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.13' transferring from '[Node] Input@Server1' into station 'Server1.InputBuffer'.
+0.00867202826011457,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Begin],Process 'Server1.OnEnteredInputBuffer' execution started.
+0.00867202826011457,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.13' ending transfer into station 'Server1.InputBuffer'.
+0.00867202826011457,DefaultEntity.13,Input@Server1,4.OnExited,[Begin],Process 'Input@Server1.OnExited' execution started.
+0.00867202826011457,DefaultEntity.13,Input@Server1,4.OnExited,[Fire] ExitedEvent,Firing event 'Input@Server1.Exited'.
+0.00867202826011457,DefaultEntity.13,Input@Server1,4.OnExited,[End],Process 'Input@Server1.OnExited' execution ended.
+0.00867202826011457,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.13' waiting to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.00867202826011457,DefaultEntity.13,Path1,0.OnReachedEnd,[End],Process 'Path1.OnReachedEnd' execution ended.
+0.00867202826011457,DefaultEntity.13,Input@Server1,2.OnEnteredToAssociatedObject,[End],Process 'Input@Server1.OnEnteredToAssociatedObject' execution ended.
+0.00867202826011457,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.00867202826011457,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.0103560636964787,--,--,--,--,Firing event 'Source1.EntityArrivals.Event'.
+0.0103560636964787,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0.00147881950893051' Hours.
+0.0103560636964787,Source1,Source1,2.OnEntityArrival,[Begin],Process 'Source1.OnEntityArrival' execution started.
+0.0103560636964787,Source1,Source1,2.OnEntityArrival,[Create] Entities,Creating '1' new object(s) of entity type 'DefaultEntity'.
+0.0103560636964787,Source1,Source1,2.OnEntityArrival,[Create] Entities,Created object 'DefaultEntity.14'.
+0.0103560636964787,DefaultEntity.14,Source1,0.OnEntityArrival,[Transfer] ToProcessing,Entity 'DefaultEntity.14' transferring from '[FreeSpace] Source1' into station 'Source1.Processing'.
+0.0103560636964787,Source1,Source1,2.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0103560636964787,DefaultEntity.14,Source1,4.OnEnteredProcessing,[Begin],Process 'Source1.OnEnteredProcessing' execution started.
+0.0103560636964787,DefaultEntity.14,Source1,4.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.14' ending transfer into station 'Source1.Processing'.
+0.0103560636964787,DefaultEntity.14,Source1,4.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.14' transferring from '[Station] Source1.Processing' into station 'Source1.OutputBuffer'.
+0.0103560636964787,DefaultEntity.14,Source1,0.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0103560636964787,DefaultEntity.14,Source1,2.OnEnteredOutputBuffer,[Begin],Process 'Source1.OnEnteredOutputBuffer' execution started.
+0.0103560636964787,DefaultEntity.14,Source1,2.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.14' ending transfer into station 'Source1.OutputBuffer'.
+0.0103560636964787,DefaultEntity.14,Source1,2.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.14' transferring from '[Station] Source1.OutputBuffer' into node 'Output@Source1'.
+0.0103560636964787,DefaultEntity.14,Output@Source1,0.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution started.
+0.0103560636964787,DefaultEntity.14,Output@Source1,0.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Source1.Entered'.
+0.0103560636964787,DefaultEntity.14,Output@Source1,0.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.14' transferring from '[Node] Output@Source1' onto link 'Path1'.
+0.0103560636964787,DefaultEntity.14,Path1,5.OnEntered,[Begin],Process 'Path1.OnEntered' execution started.
+0.0103560636964787,DefaultEntity.14,Path1,5.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.14.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.0103560636964787,DefaultEntity.14,Path1,5.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.14' ending transfer onto link 'Path1'.
+0.0103560636964787,DefaultEntity.14,Path1,5.OnEntered,[End],Process 'Path1.OnEntered' execution ended.
+0.0103560636964787,DefaultEntity.14,Source1,4.OnEnteredProcessing,[End],Process 'Source1.OnEnteredProcessing' execution ended.
+0.0103560636964787,DefaultEntity.14,Source1,2.OnEnteredOutputBuffer,[End],Process 'Source1.OnEnteredOutputBuffer' execution ended.
+0.0103560636964787,DefaultEntity.14,Output@Source1,0.OnEnteredFromAssociatedObject,[End],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution ended.
+0.0104552700456851,DefaultEntity.14,Output@Source1,0.OnExited,[Begin],Process 'Output@Source1.OnExited' execution started.
+0.0104552700456851,DefaultEntity.14,Output@Source1,0.OnExited,[Fire] ExitedEvent,Firing event 'Output@Source1.Exited'.
+0.0104552700456851,DefaultEntity.14,Output@Source1,0.OnExited,[End],Process 'Output@Source1.OnExited' execution ended.
+0.0111529512943603,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.0111529512943603,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.0111529512943603,DefaultEntity.12,Server1,1.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.12' transferring from '[Station] Server1.Processing' into station 'Server1.OutputBuffer'.
+0.0111529512943603,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.0111529512943603,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.0111529512943603,DefaultEntity.12,Server1,0.OnEnteredOutputBuffer,[Begin],Process 'Server1.OnEnteredOutputBuffer' execution started.
+0.0111529512943603,DefaultEntity.12,Server1,0.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.12' ending transfer into station 'Server1.OutputBuffer'.
+0.0111529512943603,DefaultEntity.12,Server1,0.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.12' attempting to release '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0111529512943603,DefaultEntity.12,Server1,0.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.12' released '1' capacity unit(s) of resource 'Server1'.
+0.0111529512943603,--,--,--,--,Changing from AutoState 'Busy' to 'Starved' on resource 'Server1'.
+0.0111529512943603,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '0'. Previous value was '1'.
+0.0111529512943603,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.13' checking availability to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.13' checking availability to seize '1' capacity unit(s) of resource 'Server1’.
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.13' found ‘1’ currently available capacity unit(s) of resource 'Server1’.
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.13' found '1' currently available resource(s) of resource type '[ParentObject] Server1'.
+0.0111529512943603,--,--,--,--,Resource 'Server1' selecting object 'DefaultEntity.13' waiting at rank position '1' in allocation queue which contains '1' item(s).
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.13' seized '1' capacity unit(s) of resource 'Server1'.
+0.0111529512943603,--,--,--,--,Changing from AutoState 'Starved' to 'Busy' on resource 'Server1'.
+0.0111529512943603,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '0'.
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.13' completed seize of '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0111529512943603,DefaultEntity.12,Server1,0.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.12' transferring from '[Station] Server1.OutputBuffer' into node 'Output@Server1'.
+0.0111529512943603,DefaultEntity.12,Output@Server1,2.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution started.
+0.0111529512943603,DefaultEntity.12,Output@Server1,2.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Server1.Entered'.
+0.0111529512943603,DefaultEntity.12,Output@Server1,2.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.12' transferring from '[Node] Output@Server1' onto link 'Path2'.
+0.0111529512943603,DefaultEntity.12,Path2,4.OnEntered,[Begin],Process 'Path2.OnEntered' execution started.
+0.0111529512943603,DefaultEntity.12,Path2,4.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.12.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.0111529512943603,DefaultEntity.12,Path2,4.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.12' ending transfer onto link 'Path2'.
+0.0111529512943603,DefaultEntity.12,Path2,4.OnEntered,[End],Process 'Path2.OnEntered' execution ended.
+0.0111529512943603,DefaultEntity.12,Server1,1.OnEnteredProcessing,[End],Process 'Server1.OnEnteredProcessing' execution ended.
+0.0111529512943603,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.0111529512943603,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[Transfer] ToProcessing,Entity 'DefaultEntity.13' transferring from '[Station] Server1.InputBuffer' into station 'Server1.Processing'.
+0.0111529512943603,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.0111529512943603,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.0111529512943603,DefaultEntity.12,Server1,0.OnEnteredOutputBuffer,[End],Process 'Server1.OnEnteredOutputBuffer' execution ended.
+0.0111529512943603,DefaultEntity.12,Output@Server1,2.OnEnteredFromAssociatedObject,[End],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution ended.
+0.0111529512943603,DefaultEntity.13,Server1,1.OnEnteredProcessing,[Begin],Process 'Server1.OnEnteredProcessing' execution started.
+0.0111529512943603,DefaultEntity.13,Server1,1.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.13' ending transfer into station 'Server1.Processing'.
+0.0111529512943603,DefaultEntity.13,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token branching on condition 'ProcessType==Enum.TaskProcessType.SpecificTime'.
+0.0111529512943603,DefaultEntity.13,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token sent to 'True' exit.
+0.0111529512943603,DefaultEntity.13,Server1,1.OnEnteredProcessing,[Delay] ProcessingTime,Delaying token for '0.00317052929240076' Hours until time '0.014323480586761' Hours. Delay multiplier was '1'.
+0.0111529512943603,DefaultEntity.13,Server1,3.OnEnteredInputBuffer,[End],Process 'Server1.OnEnteredInputBuffer' execution ended.
+0.0112521576435666,DefaultEntity.12,Output@Server1,3.OnExited,[Begin],Process 'Output@Server1.OnExited' execution started.
+0.0112521576435666,DefaultEntity.12,Output@Server1,3.OnExited,[Fire] ExitedEvent,Firing event 'Output@Server1.Exited'.
+0.0112521576435666,DefaultEntity.12,Output@Server1,3.OnExited,[Execute] ExitedAddOnProcess,Executing process 'Output_Server1_Exited'.
+0.0112521576435666,DefaultEntity.12,Model,2.Output_Server1_Exited,[Begin],Process 'Output_Server1_Exited' execution started.
+0.0112521576435666,DefaultEntity.12,Model,2.Output_Server1_Exited,[MyWriteText] MyWriteText1,"Writing=[0.0112521576435666,DefaultEntity.12,0.00655278052637456,0.00469937711719207,Line1Col1] to file=c:\temp\MyOutTestFile.txt"
+0.0112521576435666,DefaultEntity.12,Model,2.Output_Server1_Exited,[MyReadText] MyReadText1,"Read in the line#29=[Line2Col1, Col2, Col3] from file MyInTextFile1 into 3 states"
+0.0112521576435666,DefaultEntity.12,Model,2.Output_Server1_Exited,[End],Process 'Output_Server1_Exited' execution ended.
+0.0112521576435666,DefaultEntity.12,Output@Server1,3.OnExited,[End],Process 'Output@Server1.OnExited' execution ended.
+0.0114433652837803,DefaultEntity.14,Path1,3.OnReachedEnd,[Begin],Process 'Path1.OnReachedEnd' execution started.
+0.0114433652837803,DefaultEntity.14,Path1,3.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.14' transferring from '[EndOfLink] Path1' into node 'Input@Server1'.
+0.0114433652837803,DefaultEntity.14,Input@Server1,2.OnEnteredToAssociatedObject,[Begin],Process 'Input@Server1.OnEnteredToAssociatedObject' execution started.
+0.0114433652837803,DefaultEntity.14,Input@Server1,2.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Server1.Entered'.
+0.0114433652837803,DefaultEntity.14,Input@Server1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.14' transferring from '[Node] Input@Server1' into object 'Server1'.
+0.0114433652837803,DefaultEntity.14,Input@Server1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.14' transferring from '[Node] Input@Server1' into station 'Server1.InputBuffer'.
+0.0114433652837803,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Begin],Process 'Server1.OnEnteredInputBuffer' execution started.
+0.0114433652837803,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.14' ending transfer into station 'Server1.InputBuffer'.
+0.0114433652837803,DefaultEntity.14,Input@Server1,4.OnExited,[Begin],Process 'Input@Server1.OnExited' execution started.
+0.0114433652837803,DefaultEntity.14,Input@Server1,4.OnExited,[Fire] ExitedEvent,Firing event 'Input@Server1.Exited'.
+0.0114433652837803,DefaultEntity.14,Input@Server1,4.OnExited,[End],Process 'Input@Server1.OnExited' execution ended.
+0.0114433652837803,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.14' waiting to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0114433652837803,DefaultEntity.14,Path1,3.OnReachedEnd,[End],Process 'Path1.OnReachedEnd' execution ended.
+0.0114433652837803,DefaultEntity.14,Input@Server1,2.OnEnteredToAssociatedObject,[End],Process 'Input@Server1.OnEnteredToAssociatedObject' execution ended.
+0.0114433652837803,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.0114433652837803,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.0118348832054092,--,--,--,--,Firing event 'Source1.EntityArrivals.Event'.
+0.0118348832054092,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0.00234855357363459' Hours.
+0.0118348832054092,Source1,Source1,2.OnEntityArrival,[Begin],Process 'Source1.OnEntityArrival' execution started.
+0.0118348832054092,Source1,Source1,2.OnEntityArrival,[Create] Entities,Creating '1' new object(s) of entity type 'DefaultEntity'.
+0.0118348832054092,Source1,Source1,2.OnEntityArrival,[Create] Entities,Created object 'DefaultEntity.15'.
+0.0118348832054092,DefaultEntity.15,Source1,3.OnEntityArrival,[Transfer] ToProcessing,Entity 'DefaultEntity.15' transferring from '[FreeSpace] Source1' into station 'Source1.Processing'.
+0.0118348832054092,Source1,Source1,2.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0118348832054092,DefaultEntity.15,Source1,4.OnEnteredProcessing,[Begin],Process 'Source1.OnEnteredProcessing' execution started.
+0.0118348832054092,DefaultEntity.15,Source1,4.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.15' ending transfer into station 'Source1.Processing'.
+0.0118348832054092,DefaultEntity.15,Source1,4.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.15' transferring from '[Station] Source1.Processing' into station 'Source1.OutputBuffer'.
+0.0118348832054092,DefaultEntity.15,Source1,3.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0118348832054092,DefaultEntity.15,Source1,2.OnEnteredOutputBuffer,[Begin],Process 'Source1.OnEnteredOutputBuffer' execution started.
+0.0118348832054092,DefaultEntity.15,Source1,2.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.15' ending transfer into station 'Source1.OutputBuffer'.
+0.0118348832054092,DefaultEntity.15,Source1,2.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.15' transferring from '[Station] Source1.OutputBuffer' into node 'Output@Source1'.
+0.0118348832054092,DefaultEntity.15,Output@Source1,3.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution started.
+0.0118348832054092,DefaultEntity.15,Output@Source1,3.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Source1.Entered'.
+0.0118348832054092,DefaultEntity.15,Output@Source1,3.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.15' transferring from '[Node] Output@Source1' onto link 'Path1'.
+0.0118348832054092,DefaultEntity.15,Path1,5.OnEntered,[Begin],Process 'Path1.OnEntered' execution started.
+0.0118348832054092,DefaultEntity.15,Path1,5.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.15.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.0118348832054092,DefaultEntity.15,Path1,5.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.15' ending transfer onto link 'Path1'.
+0.0118348832054092,DefaultEntity.15,Path1,5.OnEntered,[End],Process 'Path1.OnEntered' execution ended.
+0.0118348832054092,DefaultEntity.15,Source1,4.OnEnteredProcessing,[End],Process 'Source1.OnEnteredProcessing' execution ended.
+0.0118348832054092,DefaultEntity.15,Source1,2.OnEnteredOutputBuffer,[End],Process 'Source1.OnEnteredOutputBuffer' execution ended.
+0.0118348832054092,DefaultEntity.15,Output@Source1,3.OnEnteredFromAssociatedObject,[End],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution ended.
+0.0119340895546156,DefaultEntity.15,Output@Source1,3.OnExited,[Begin],Process 'Output@Source1.OnExited' execution started.
+0.0119340895546156,DefaultEntity.15,Output@Source1,3.OnExited,[Fire] ExitedEvent,Firing event 'Output@Source1.Exited'.
+0.0119340895546156,DefaultEntity.15,Output@Source1,3.OnExited,[End],Process 'Output@Source1.OnExited' execution ended.
+0.0125021576435666,DefaultEntity.12,Path2,3.OnReachedEnd,[Begin],Process 'Path2.OnReachedEnd' execution started.
+0.0125021576435666,DefaultEntity.12,Path2,3.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.12' transferring from '[EndOfLink] Path2' into node 'Input@Sink1'.
+0.0125021576435666,DefaultEntity.12,Input@Sink1,2.OnEnteredToAssociatedObject,[Begin],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution started.
+0.0125021576435666,DefaultEntity.12,Input@Sink1,2.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Sink1.Entered'.
+0.0125021576435666,DefaultEntity.12,Input@Sink1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.12' transferring from '[Node] Input@Sink1' into object 'Sink1'.
+0.0125021576435666,DefaultEntity.12,Input@Sink1,2.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.12' transferring from '[Node] Input@Sink1' into station 'Sink1.InputBuffer'.
+0.0125021576435666,DefaultEntity.12,Sink1,4.OnEnteredInputBuffer,[Begin],Process 'Sink1.OnEnteredInputBuffer' execution started.
+0.0125021576435666,DefaultEntity.12,Sink1,4.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.12' ending transfer into station 'Sink1.InputBuffer'.
+0.0125021576435666,DefaultEntity.12,Input@Sink1,5.OnExited,[Begin],Process 'Input@Sink1.OnExited' execution started.
+0.0125021576435666,DefaultEntity.12,Input@Sink1,5.OnExited,[Fire] ExitedEvent,Firing event 'Input@Sink1.Exited'.
+0.0125021576435666,DefaultEntity.12,Input@Sink1,5.OnExited,[End],Process 'Input@Sink1.OnExited' execution ended.
+0.0125021576435666,DefaultEntity.12,Sink1,4.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording ‘1’ observation value(s) of type ‘Expression’ for tally statistic ‘Sink1.TimeInSystem’.
+0.0125021576435666,DefaultEntity.12,Sink1,4.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording observation value '0.00594937711719207' Hours for tally statistic 'Sink1.TimeInSystem'.
+0.0125021576435666,DefaultEntity.12,Sink1,4.OnEnteredInputBuffer,[Destroy] Entity,Destroying object 'DefaultEntity.12'.
+0.0125021576435666,--,--,--,--,Object 'DefaultEntity.12' destroyed.
+0.0125021576435666, ,Sink1,4.OnEnteredInputBuffer,[End],Process 'Sink1.OnEnteredInputBuffer' execution ended.
+0.0125021576435666, ,Path2,3.OnReachedEnd,[End],Process 'Path2.OnReachedEnd' execution ended.
+0.0125021576435666, ,Input@Sink1,2.OnEnteredToAssociatedObject,[End],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution ended.
+0.0129221847927108,DefaultEntity.15,Path1,2.OnReachedEnd,[Begin],Process 'Path1.OnReachedEnd' execution started.
+0.0129221847927108,DefaultEntity.15,Path1,2.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.15' transferring from '[EndOfLink] Path1' into node 'Input@Server1'.
+0.0129221847927108,DefaultEntity.15,Input@Server1,3.OnEnteredToAssociatedObject,[Begin],Process 'Input@Server1.OnEnteredToAssociatedObject' execution started.
+0.0129221847927108,DefaultEntity.15,Input@Server1,3.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Server1.Entered'.
+0.0129221847927108,DefaultEntity.15,Input@Server1,3.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.15' transferring from '[Node] Input@Server1' into object 'Server1'.
+0.0129221847927108,DefaultEntity.15,Input@Server1,3.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.15' transferring from '[Node] Input@Server1' into station 'Server1.InputBuffer'.
+0.0129221847927108,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Begin],Process 'Server1.OnEnteredInputBuffer' execution started.
+0.0129221847927108,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.15' ending transfer into station 'Server1.InputBuffer'.
+0.0129221847927108,DefaultEntity.15,Input@Server1,5.OnExited,[Begin],Process 'Input@Server1.OnExited' execution started.
+0.0129221847927108,DefaultEntity.15,Input@Server1,5.OnExited,[Fire] ExitedEvent,Firing event 'Input@Server1.Exited'.
+0.0129221847927108,DefaultEntity.15,Input@Server1,5.OnExited,[End],Process 'Input@Server1.OnExited' execution ended.
+0.0129221847927108,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.15' waiting to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0129221847927108,DefaultEntity.15,Path1,2.OnReachedEnd,[End],Process 'Path1.OnReachedEnd' execution ended.
+0.0129221847927108,DefaultEntity.15,Input@Server1,3.OnEnteredToAssociatedObject,[End],Process 'Input@Server1.OnEnteredToAssociatedObject' execution ended.
+0.0129221847927108,--,--,--,--,Resource 'Server1' checking allocation queue which contains '2' item(s).
+0.0129221847927108,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.0141834367790438,--,--,--,--,Firing event 'Source1.EntityArrivals.Event'.
+0.0141834367790438,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0.00367622045349037' Hours.
+0.0141834367790438,Source1,Source1,3.OnEntityArrival,[Begin],Process 'Source1.OnEntityArrival' execution started.
+0.0141834367790438,Source1,Source1,3.OnEntityArrival,[Create] Entities,Creating '1' new object(s) of entity type 'DefaultEntity'.
+0.0141834367790438,Source1,Source1,3.OnEntityArrival,[Create] Entities,Created object 'DefaultEntity.16'.
+0.0141834367790438,DefaultEntity.16,Source1,2.OnEntityArrival,[Transfer] ToProcessing,Entity 'DefaultEntity.16' transferring from '[FreeSpace] Source1' into station 'Source1.Processing'.
+0.0141834367790438,Source1,Source1,3.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0141834367790438,DefaultEntity.16,Source1,5.OnEnteredProcessing,[Begin],Process 'Source1.OnEnteredProcessing' execution started.
+0.0141834367790438,DefaultEntity.16,Source1,5.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.16' ending transfer into station 'Source1.Processing'.
+0.0141834367790438,DefaultEntity.16,Source1,5.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.16' transferring from '[Station] Source1.Processing' into station 'Source1.OutputBuffer'.
+0.0141834367790438,DefaultEntity.16,Source1,2.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0141834367790438,DefaultEntity.16,Source1,3.OnEnteredOutputBuffer,[Begin],Process 'Source1.OnEnteredOutputBuffer' execution started.
+0.0141834367790438,DefaultEntity.16,Source1,3.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.16' ending transfer into station 'Source1.OutputBuffer'.
+0.0141834367790438,DefaultEntity.16,Source1,3.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.16' transferring from '[Station] Source1.OutputBuffer' into node 'Output@Source1'.
+0.0141834367790438,DefaultEntity.16,Output@Source1,2.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution started.
+0.0141834367790438,DefaultEntity.16,Output@Source1,2.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Source1.Entered'.
+0.0141834367790438,DefaultEntity.16,Output@Source1,2.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.16' transferring from '[Node] Output@Source1' onto link 'Path1'.
+0.0141834367790438,DefaultEntity.16,Path1,6.OnEntered,[Begin],Process 'Path1.OnEntered' execution started.
+0.0141834367790438,DefaultEntity.16,Path1,6.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.16.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.0141834367790438,DefaultEntity.16,Path1,6.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.16' ending transfer onto link 'Path1'.
+0.0141834367790438,DefaultEntity.16,Path1,6.OnEntered,[End],Process 'Path1.OnEntered' execution ended.
+0.0141834367790438,DefaultEntity.16,Source1,5.OnEnteredProcessing,[End],Process 'Source1.OnEnteredProcessing' execution ended.
+0.0141834367790438,DefaultEntity.16,Source1,3.OnEnteredOutputBuffer,[End],Process 'Source1.OnEnteredOutputBuffer' execution ended.
+0.0141834367790438,DefaultEntity.16,Output@Source1,2.OnEnteredFromAssociatedObject,[End],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution ended.
+0.0142826431282502,DefaultEntity.16,Output@Source1,2.OnExited,[Begin],Process 'Output@Source1.OnExited' execution started.
+0.0142826431282502,DefaultEntity.16,Output@Source1,2.OnExited,[Fire] ExitedEvent,Firing event 'Output@Source1.Exited'.
+0.0142826431282502,DefaultEntity.16,Output@Source1,2.OnExited,[End],Process 'Output@Source1.OnExited' execution ended.
+0.014323480586761,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.014323480586761,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.014323480586761,DefaultEntity.13,Server1,1.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.13' transferring from '[Station] Server1.Processing' into station 'Server1.OutputBuffer'.
+0.014323480586761,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.014323480586761,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.014323480586761,DefaultEntity.13,Server1,2.OnEnteredOutputBuffer,[Begin],Process 'Server1.OnEnteredOutputBuffer' execution started.
+0.014323480586761,DefaultEntity.13,Server1,2.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.13' ending transfer into station 'Server1.OutputBuffer'.
+0.014323480586761,DefaultEntity.13,Server1,2.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.13' attempting to release '1' resource(s) of resource type '[ParentObject] Server1'.
+0.014323480586761,DefaultEntity.13,Server1,2.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.13' released '1' capacity unit(s) of resource 'Server1'.
+0.014323480586761,--,--,--,--,Changing from AutoState 'Busy' to 'Starved' on resource 'Server1'.
+0.014323480586761,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '0'. Previous value was '1'.
+0.014323480586761,--,--,--,--,Resource 'Server1' checking allocation queue which contains '2' item(s).
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.14' checking availability to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.14' checking availability to seize '1' capacity unit(s) of resource 'Server1’.
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.14' found ‘1’ currently available capacity unit(s) of resource 'Server1’.
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.14' found '1' currently available resource(s) of resource type '[ParentObject] Server1'.
+0.014323480586761,--,--,--,--,Resource 'Server1' selecting object 'DefaultEntity.14' waiting at rank position '1' in allocation queue which contains '2' item(s).
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.14' seized '1' capacity unit(s) of resource 'Server1'.
+0.014323480586761,--,--,--,--,Changing from AutoState 'Starved' to 'Busy' on resource 'Server1'.
+0.014323480586761,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '0'.
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.14' completed seize of '1' resource(s) of resource type '[ParentObject] Server1'.
+0.014323480586761,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.014323480586761,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.014323480586761,DefaultEntity.13,Server1,2.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.13' transferring from '[Station] Server1.OutputBuffer' into node 'Output@Server1'.
+0.014323480586761,DefaultEntity.13,Output@Server1,3.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution started.
+0.014323480586761,DefaultEntity.13,Output@Server1,3.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Server1.Entered'.
+0.014323480586761,DefaultEntity.13,Output@Server1,3.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.13' transferring from '[Node] Output@Server1' onto link 'Path2'.
+0.014323480586761,DefaultEntity.13,Path2,5.OnEntered,[Begin],Process 'Path2.OnEntered' execution started.
+0.014323480586761,DefaultEntity.13,Path2,5.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.13.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.014323480586761,DefaultEntity.13,Path2,5.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.13' ending transfer onto link 'Path2'.
+0.014323480586761,DefaultEntity.13,Path2,5.OnEntered,[End],Process 'Path2.OnEntered' execution ended.
+0.014323480586761,DefaultEntity.13,Server1,1.OnEnteredProcessing,[End],Process 'Server1.OnEnteredProcessing' execution ended.
+0.014323480586761,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.014323480586761,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[Transfer] ToProcessing,Entity 'DefaultEntity.14' transferring from '[Station] Server1.InputBuffer' into station 'Server1.Processing'.
+0.014323480586761,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.014323480586761,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.014323480586761,DefaultEntity.13,Server1,2.OnEnteredOutputBuffer,[End],Process 'Server1.OnEnteredOutputBuffer' execution ended.
+0.014323480586761,DefaultEntity.13,Output@Server1,3.OnEnteredFromAssociatedObject,[End],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution ended.
+0.014323480586761,DefaultEntity.14,Server1,1.OnEnteredProcessing,[Begin],Process 'Server1.OnEnteredProcessing' execution started.
+0.014323480586761,DefaultEntity.14,Server1,1.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.14' ending transfer into station 'Server1.Processing'.
+0.014323480586761,DefaultEntity.14,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token branching on condition 'ProcessType==Enum.TaskProcessType.SpecificTime'.
+0.014323480586761,DefaultEntity.14,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token sent to 'True' exit.
+0.014323480586761,DefaultEntity.14,Server1,1.OnEnteredProcessing,[Delay] ProcessingTime,Delaying token for '0.00447154386742956' Hours until time '0.0187950244541906' Hours. Delay multiplier was '1'.
+0.014323480586761,DefaultEntity.14,Server1,0.OnEnteredInputBuffer,[End],Process 'Server1.OnEnteredInputBuffer' execution ended.
+0.0144226869359674,DefaultEntity.13,Output@Server1,0.OnExited,[Begin],Process 'Output@Server1.OnExited' execution started.
+0.0144226869359674,DefaultEntity.13,Output@Server1,0.OnExited,[Fire] ExitedEvent,Firing event 'Output@Server1.Exited'.
+0.0144226869359674,DefaultEntity.13,Output@Server1,0.OnExited,[Execute] ExitedAddOnProcess,Executing process 'Output_Server1_Exited'.
+0.0144226869359674,DefaultEntity.13,Model,3.Output_Server1_Exited,[Begin],Process 'Output_Server1_Exited' execution started.
+0.0144226869359674,DefaultEntity.13,Model,3.Output_Server1_Exited,[MyWriteText] MyWriteText1,"Writing=[0.0144226869359674,DefaultEntity.13,0.00758472667281298,0.0068379602631544,Line2Col1] to file=c:\temp\MyOutTestFile.txt"
+0.0144226869359674,DefaultEntity.13,Model,3.Output_Server1_Exited,[MyReadText] MyReadText1,"Read in the line#30=[Line3Col1, Col2, Col3] from file MyInTextFile1 into 3 states"
+0.0144226869359674,DefaultEntity.13,Model,3.Output_Server1_Exited,[End],Process 'Output_Server1_Exited' execution ended.
+0.0144226869359674,DefaultEntity.13,Output@Server1,0.OnExited,[End],Process 'Output@Server1.OnExited' execution ended.
+0.0152707383663454,DefaultEntity.16,Path1,0.OnReachedEnd,[Begin],Process 'Path1.OnReachedEnd' execution started.
+0.0152707383663454,DefaultEntity.16,Path1,0.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.16' transferring from '[EndOfLink] Path1' into node 'Input@Server1'.
+0.0152707383663454,DefaultEntity.16,Input@Server1,3.OnEnteredToAssociatedObject,[Begin],Process 'Input@Server1.OnEnteredToAssociatedObject' execution started.
+0.0152707383663454,DefaultEntity.16,Input@Server1,3.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Server1.Entered'.
+0.0152707383663454,DefaultEntity.16,Input@Server1,3.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.16' transferring from '[Node] Input@Server1' into object 'Server1'.
+0.0152707383663454,DefaultEntity.16,Input@Server1,3.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.16' transferring from '[Node] Input@Server1' into station 'Server1.InputBuffer'.
+0.0152707383663454,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Begin],Process 'Server1.OnEnteredInputBuffer' execution started.
+0.0152707383663454,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.16' ending transfer into station 'Server1.InputBuffer'.
+0.0152707383663454,DefaultEntity.16,Input@Server1,5.OnExited,[Begin],Process 'Input@Server1.OnExited' execution started.
+0.0152707383663454,DefaultEntity.16,Input@Server1,5.OnExited,[Fire] ExitedEvent,Firing event 'Input@Server1.Exited'.
+0.0152707383663454,DefaultEntity.16,Input@Server1,5.OnExited,[End],Process 'Input@Server1.OnExited' execution ended.
+0.0152707383663454,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.16' waiting to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0152707383663454,DefaultEntity.16,Path1,0.OnReachedEnd,[End],Process 'Path1.OnReachedEnd' execution ended.
+0.0152707383663454,DefaultEntity.16,Input@Server1,3.OnEnteredToAssociatedObject,[End],Process 'Input@Server1.OnEnteredToAssociatedObject' execution ended.
+0.0152707383663454,--,--,--,--,Resource 'Server1' checking allocation queue which contains '2' item(s).
+0.0152707383663454,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.0156726869359674,DefaultEntity.13,Path2,3.OnReachedEnd,[Begin],Process 'Path2.OnReachedEnd' execution started.
+0.0156726869359674,DefaultEntity.13,Path2,3.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.13' transferring from '[EndOfLink] Path2' into node 'Input@Sink1'.
+0.0156726869359674,DefaultEntity.13,Input@Sink1,0.OnEnteredToAssociatedObject,[Begin],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution started.
+0.0156726869359674,DefaultEntity.13,Input@Sink1,0.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Sink1.Entered'.
+0.0156726869359674,DefaultEntity.13,Input@Sink1,0.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.13' transferring from '[Node] Input@Sink1' into object 'Sink1'.
+0.0156726869359674,DefaultEntity.13,Input@Sink1,0.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.13' transferring from '[Node] Input@Sink1' into station 'Sink1.InputBuffer'.
+0.0156726869359674,DefaultEntity.13,Sink1,5.OnEnteredInputBuffer,[Begin],Process 'Sink1.OnEnteredInputBuffer' execution started.
+0.0156726869359674,DefaultEntity.13,Sink1,5.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.13' ending transfer into station 'Sink1.InputBuffer'.
+0.0156726869359674,DefaultEntity.13,Input@Sink1,6.OnExited,[Begin],Process 'Input@Sink1.OnExited' execution started.
+0.0156726869359674,DefaultEntity.13,Input@Sink1,6.OnExited,[Fire] ExitedEvent,Firing event 'Input@Sink1.Exited'.
+0.0156726869359674,DefaultEntity.13,Input@Sink1,6.OnExited,[End],Process 'Input@Sink1.OnExited' execution ended.
+0.0156726869359674,DefaultEntity.13,Sink1,5.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording ‘1’ observation value(s) of type ‘Expression’ for tally statistic ‘Sink1.TimeInSystem’.
+0.0156726869359674,DefaultEntity.13,Sink1,5.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording observation value '0.0080879602631544' Hours for tally statistic 'Sink1.TimeInSystem'.
+0.0156726869359674,DefaultEntity.13,Sink1,5.OnEnteredInputBuffer,[Destroy] Entity,Destroying object 'DefaultEntity.13'.
+0.0156726869359674,--,--,--,--,Object 'DefaultEntity.13' destroyed.
+0.0156726869359674, ,Sink1,5.OnEnteredInputBuffer,[End],Process 'Sink1.OnEnteredInputBuffer' execution ended.
+0.0156726869359674, ,Path2,3.OnReachedEnd,[End],Process 'Path2.OnReachedEnd' execution ended.
+0.0156726869359674, ,Input@Sink1,0.OnEnteredToAssociatedObject,[End],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution ended.
+0.0178596572325342,--,--,--,--,Firing event 'Source1.EntityArrivals.Event'.
+0.0178596572325342,--,--,--,--,Time until next event of timer 'Source1.EntityArrivals' is '0.0046773247245443' Hours.
+0.0178596572325342,Source1,Source1,0.OnEntityArrival,[Begin],Process 'Source1.OnEntityArrival' execution started.
+0.0178596572325342,Source1,Source1,0.OnEntityArrival,[Create] Entities,Creating '1' new object(s) of entity type 'DefaultEntity'.
+0.0178596572325342,Source1,Source1,0.OnEntityArrival,[Create] Entities,Created object 'DefaultEntity.17'.
+0.0178596572325342,DefaultEntity.17,Source1,3.OnEntityArrival,[Transfer] ToProcessing,Entity 'DefaultEntity.17' transferring from '[FreeSpace] Source1' into station 'Source1.Processing'.
+0.0178596572325342,Source1,Source1,0.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0178596572325342,DefaultEntity.17,Source1,5.OnEnteredProcessing,[Begin],Process 'Source1.OnEnteredProcessing' execution started.
+0.0178596572325342,DefaultEntity.17,Source1,5.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.17' ending transfer into station 'Source1.Processing'.
+0.0178596572325342,DefaultEntity.17,Source1,5.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.17' transferring from '[Station] Source1.Processing' into station 'Source1.OutputBuffer'.
+0.0178596572325342,DefaultEntity.17,Source1,3.OnEntityArrival,[End],Process 'Source1.OnEntityArrival' execution ended.
+0.0178596572325342,DefaultEntity.17,Source1,0.OnEnteredOutputBuffer,[Begin],Process 'Source1.OnEnteredOutputBuffer' execution started.
+0.0178596572325342,DefaultEntity.17,Source1,0.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.17' ending transfer into station 'Source1.OutputBuffer'.
+0.0178596572325342,DefaultEntity.17,Source1,0.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.17' transferring from '[Station] Source1.OutputBuffer' into node 'Output@Source1'.
+0.0178596572325342,DefaultEntity.17,Output@Source1,3.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution started.
+0.0178596572325342,DefaultEntity.17,Output@Source1,3.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Source1.Entered'.
+0.0178596572325342,DefaultEntity.17,Output@Source1,3.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.17' transferring from '[Node] Output@Source1' onto link 'Path1'.
+0.0178596572325342,DefaultEntity.17,Path1,6.OnEntered,[Begin],Process 'Path1.OnEntered' execution started.
+0.0178596572325342,DefaultEntity.17,Path1,6.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.17.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.0178596572325342,DefaultEntity.17,Path1,6.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.17' ending transfer onto link 'Path1'.
+0.0178596572325342,DefaultEntity.17,Path1,6.OnEntered,[End],Process 'Path1.OnEntered' execution ended.
+0.0178596572325342,DefaultEntity.17,Source1,5.OnEnteredProcessing,[End],Process 'Source1.OnEnteredProcessing' execution ended.
+0.0178596572325342,DefaultEntity.17,Source1,0.OnEnteredOutputBuffer,[End],Process 'Source1.OnEnteredOutputBuffer' execution ended.
+0.0178596572325342,DefaultEntity.17,Output@Source1,3.OnEnteredFromAssociatedObject,[End],Process 'Output@Source1.OnEnteredFromAssociatedObject' execution ended.
+0.0179588635817406,DefaultEntity.17,Output@Source1,3.OnExited,[Begin],Process 'Output@Source1.OnExited' execution started.
+0.0179588635817406,DefaultEntity.17,Output@Source1,3.OnExited,[Fire] ExitedEvent,Firing event 'Output@Source1.Exited'.
+0.0179588635817406,DefaultEntity.17,Output@Source1,3.OnExited,[End],Process 'Output@Source1.OnExited' execution ended.
+0.0187950244541906,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.0187950244541906,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.0187950244541906,DefaultEntity.14,Server1,1.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.14' transferring from '[Station] Server1.Processing' into station 'Server1.OutputBuffer'.
+0.0187950244541906,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.0187950244541906,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.0187950244541906,DefaultEntity.14,Server1,3.OnEnteredOutputBuffer,[Begin],Process 'Server1.OnEnteredOutputBuffer' execution started.
+0.0187950244541906,DefaultEntity.14,Server1,3.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.14' ending transfer into station 'Server1.OutputBuffer'.
+0.0187950244541906,DefaultEntity.14,Server1,3.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.14' attempting to release '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0187950244541906,DefaultEntity.14,Server1,3.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.14' released '1' capacity unit(s) of resource 'Server1'.
+0.0187950244541906,--,--,--,--,Changing from AutoState 'Busy' to 'Starved' on resource 'Server1'.
+0.0187950244541906,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '0'. Previous value was '1'.
+0.0187950244541906,--,--,--,--,Resource 'Server1' checking allocation queue which contains '2' item(s).
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.15' checking availability to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.15' checking availability to seize '1' capacity unit(s) of resource 'Server1’.
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.15' found ‘1’ currently available capacity unit(s) of resource 'Server1’.
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.15' found '1' currently available resource(s) of resource type '[ParentObject] Server1'.
+0.0187950244541906,--,--,--,--,Resource 'Server1' selecting object 'DefaultEntity.15' waiting at rank position '1' in allocation queue which contains '2' item(s).
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.15' seized '1' capacity unit(s) of resource 'Server1'.
+0.0187950244541906,--,--,--,--,Changing from AutoState 'Starved' to 'Busy' on resource 'Server1'.
+0.0187950244541906,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '0'.
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.15' completed seize of '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0187950244541906,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.0187950244541906,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.0187950244541906,DefaultEntity.14,Server1,3.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.14' transferring from '[Station] Server1.OutputBuffer' into node 'Output@Server1'.
+0.0187950244541906,DefaultEntity.14,Output@Server1,0.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution started.
+0.0187950244541906,DefaultEntity.14,Output@Server1,0.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Server1.Entered'.
+0.0187950244541906,DefaultEntity.14,Output@Server1,0.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.14' transferring from '[Node] Output@Server1' onto link 'Path2'.
+0.0187950244541906,DefaultEntity.14,Path2,5.OnEntered,[Begin],Process 'Path2.OnEntered' execution started.
+0.0187950244541906,DefaultEntity.14,Path2,5.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.14.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.0187950244541906,DefaultEntity.14,Path2,5.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.14' ending transfer onto link 'Path2'.
+0.0187950244541906,DefaultEntity.14,Path2,5.OnEntered,[End],Process 'Path2.OnEntered' execution ended.
+0.0187950244541906,DefaultEntity.14,Server1,1.OnEnteredProcessing,[End],Process 'Server1.OnEnteredProcessing' execution ended.
+0.0187950244541906,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.0187950244541906,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[Transfer] ToProcessing,Entity 'DefaultEntity.15' transferring from '[Station] Server1.InputBuffer' into station 'Server1.Processing'.
+0.0187950244541906,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.0187950244541906,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.0187950244541906,DefaultEntity.14,Server1,3.OnEnteredOutputBuffer,[End],Process 'Server1.OnEnteredOutputBuffer' execution ended.
+0.0187950244541906,DefaultEntity.14,Output@Server1,0.OnEnteredFromAssociatedObject,[End],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution ended.
+0.0187950244541906,DefaultEntity.15,Server1,1.OnEnteredProcessing,[Begin],Process 'Server1.OnEnteredProcessing' execution started.
+0.0187950244541906,DefaultEntity.15,Server1,1.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.15' ending transfer into station 'Server1.Processing'.
+0.0187950244541906,DefaultEntity.15,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token branching on condition 'ProcessType==Enum.TaskProcessType.SpecificTime'.
+0.0187950244541906,DefaultEntity.15,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token sent to 'True' exit.
+0.0187950244541906,DefaultEntity.15,Server1,1.OnEnteredProcessing,[Delay] ProcessingTime,Delaying token for '0.00229231437840338' Hours until time '0.021087338832594' Hours. Delay multiplier was '1'.
+0.0187950244541906,DefaultEntity.15,Server1,4.OnEnteredInputBuffer,[End],Process 'Server1.OnEnteredInputBuffer' execution ended.
+0.0188942308033969,DefaultEntity.14,Output@Server1,4.OnExited,[Begin],Process 'Output@Server1.OnExited' execution started.
+0.0188942308033969,DefaultEntity.14,Output@Server1,4.OnExited,[Fire] ExitedEvent,Firing event 'Output@Server1.Exited'.
+0.0188942308033969,DefaultEntity.14,Output@Server1,4.OnExited,[Execute] ExitedAddOnProcess,Executing process 'Output_Server1_Exited'.
+0.0188942308033969,DefaultEntity.14,Model,0.Output_Server1_Exited,[Begin],Process 'Output_Server1_Exited' execution started.
+0.0188942308033969,DefaultEntity.14,Model,0.Output_Server1_Exited,[MyWriteText] MyWriteText1,"Writing=[0.0188942308033969,DefaultEntity.14,0.0103560636964787,0.00853816710691821,Line3Col1] to file=c:\temp\MyOutTestFile.txt"
+0.0188942308033969,DefaultEntity.14,Model,0.Output_Server1_Exited,[MyReadText] MyReadText1,"Read in the line#31=[Line4Col1, Col2, Col3] from file MyInTextFile1 into 3 states"
+0.0188942308033969,DefaultEntity.14,Model,0.Output_Server1_Exited,[End],Process 'Output_Server1_Exited' execution ended.
+0.0188942308033969,DefaultEntity.14,Output@Server1,4.OnExited,[End],Process 'Output@Server1.OnExited' execution ended.
+0.0189469588198358,DefaultEntity.17,Path1,4.OnReachedEnd,[Begin],Process 'Path1.OnReachedEnd' execution started.
+0.0189469588198358,DefaultEntity.17,Path1,4.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.17' transferring from '[EndOfLink] Path1' into node 'Input@Server1'.
+0.0189469588198358,DefaultEntity.17,Input@Server1,0.OnEnteredToAssociatedObject,[Begin],Process 'Input@Server1.OnEnteredToAssociatedObject' execution started.
+0.0189469588198358,DefaultEntity.17,Input@Server1,0.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Server1.Entered'.
+0.0189469588198358,DefaultEntity.17,Input@Server1,0.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.17' transferring from '[Node] Input@Server1' into object 'Server1'.
+0.0189469588198358,DefaultEntity.17,Input@Server1,0.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.17' transferring from '[Node] Input@Server1' into station 'Server1.InputBuffer'.
+0.0189469588198358,DefaultEntity.17,Server1,3.OnEnteredInputBuffer,[Begin],Process 'Server1.OnEnteredInputBuffer' execution started.
+0.0189469588198358,DefaultEntity.17,Server1,3.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.17' ending transfer into station 'Server1.InputBuffer'.
+0.0189469588198358,DefaultEntity.17,Input@Server1,5.OnExited,[Begin],Process 'Input@Server1.OnExited' execution started.
+0.0189469588198358,DefaultEntity.17,Input@Server1,5.OnExited,[Fire] ExitedEvent,Firing event 'Input@Server1.Exited'.
+0.0189469588198358,DefaultEntity.17,Input@Server1,5.OnExited,[End],Process 'Input@Server1.OnExited' execution ended.
+0.0189469588198358,DefaultEntity.17,Server1,3.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.17' waiting to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.0189469588198358,DefaultEntity.17,Path1,4.OnReachedEnd,[End],Process 'Path1.OnReachedEnd' execution ended.
+0.0189469588198358,DefaultEntity.17,Input@Server1,0.OnEnteredToAssociatedObject,[End],Process 'Input@Server1.OnEnteredToAssociatedObject' execution ended.
+0.0189469588198358,--,--,--,--,Resource 'Server1' checking allocation queue which contains '2' item(s).
+0.0189469588198358,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.0201442308033969,DefaultEntity.14,Path2,0.OnReachedEnd,[Begin],Process 'Path2.OnReachedEnd' execution started.
+0.0201442308033969,DefaultEntity.14,Path2,0.OnReachedEnd,[Transfer] FromPath,Entity 'DefaultEntity.14' transferring from '[EndOfLink] Path2' into node 'Input@Sink1'.
+0.0201442308033969,DefaultEntity.14,Input@Sink1,4.OnEnteredToAssociatedObject,[Begin],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution started.
+0.0201442308033969,DefaultEntity.14,Input@Sink1,4.OnEnteredToAssociatedObject,[Fire] EnteredEvent,Firing event 'Input@Sink1.Entered'.
+0.0201442308033969,DefaultEntity.14,Input@Sink1,4.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.14' transferring from '[Node] Input@Sink1' into object 'Sink1'.
+0.0201442308033969,DefaultEntity.14,Input@Sink1,4.OnEnteredToAssociatedObject,[Transfer] ToAssociatedObject,Entity 'DefaultEntity.14' transferring from '[Node] Input@Sink1' into station 'Sink1.InputBuffer'.
+0.0201442308033969,DefaultEntity.14,Sink1,5.OnEnteredInputBuffer,[Begin],Process 'Sink1.OnEnteredInputBuffer' execution started.
+0.0201442308033969,DefaultEntity.14,Sink1,5.OnEnteredInputBuffer,[EndTransfer] IntoInputBuffer,Entity 'DefaultEntity.14' ending transfer into station 'Sink1.InputBuffer'.
+0.0201442308033969,DefaultEntity.14,Input@Sink1,6.OnExited,[Begin],Process 'Input@Sink1.OnExited' execution started.
+0.0201442308033969,DefaultEntity.14,Input@Sink1,6.OnExited,[Fire] ExitedEvent,Firing event 'Input@Sink1.Exited'.
+0.0201442308033969,DefaultEntity.14,Input@Sink1,6.OnExited,[End],Process 'Input@Sink1.OnExited' execution ended.
+0.0201442308033969,DefaultEntity.14,Sink1,5.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording ‘1’ observation value(s) of type ‘Expression’ for tally statistic ‘Sink1.TimeInSystem’.
+0.0201442308033969,DefaultEntity.14,Sink1,5.OnEnteredInputBuffer,[Tally] TimeInSystem,Recording observation value '0.00978816710691821' Hours for tally statistic 'Sink1.TimeInSystem'.
+0.0201442308033969,DefaultEntity.14,Sink1,5.OnEnteredInputBuffer,[Destroy] Entity,Destroying object 'DefaultEntity.14'.
+0.0201442308033969,--,--,--,--,Object 'DefaultEntity.14' destroyed.
+0.0201442308033969, ,Sink1,5.OnEnteredInputBuffer,[End],Process 'Sink1.OnEnteredInputBuffer' execution ended.
+0.0201442308033969, ,Path2,0.OnReachedEnd,[End],Process 'Path2.OnReachedEnd' execution ended.
+0.0201442308033969, ,Input@Sink1,4.OnEnteredToAssociatedObject,[End],Process 'Input@Sink1.OnEnteredToAssociatedObject' execution ended.
+0.021087338832594,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.021087338832594,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.021087338832594,DefaultEntity.15,Server1,1.OnEnteredProcessing,[Transfer] ToOutputBuffer,Entity 'DefaultEntity.15' transferring from '[Station] Server1.Processing' into station 'Server1.OutputBuffer'.
+0.021087338832594,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.021087338832594,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.021087338832594,DefaultEntity.15,Server1,4.OnEnteredOutputBuffer,[Begin],Process 'Server1.OnEnteredOutputBuffer' execution started.
+0.021087338832594,DefaultEntity.15,Server1,4.OnEnteredOutputBuffer,[EndTransfer] IntoOutputBuffer,Entity 'DefaultEntity.15' ending transfer into station 'Server1.OutputBuffer'.
+0.021087338832594,DefaultEntity.15,Server1,4.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.15' attempting to release '1' resource(s) of resource type '[ParentObject] Server1'.
+0.021087338832594,DefaultEntity.15,Server1,4.OnEnteredOutputBuffer,[Release] Server,Object 'DefaultEntity.15' released '1' capacity unit(s) of resource 'Server1'.
+0.021087338832594,--,--,--,--,Changing from AutoState 'Busy' to 'Starved' on resource 'Server1'.
+0.021087338832594,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '0'. Previous value was '1'.
+0.021087338832594,--,--,--,--,Resource 'Server1' checking allocation queue which contains '2' item(s).
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.16' checking availability to seize '1' resource(s) of resource type '[ParentObject] Server1'.
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.16' checking availability to seize '1' capacity unit(s) of resource 'Server1’.
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.16' found ‘1’ currently available capacity unit(s) of resource 'Server1’.
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.16' found '1' currently available resource(s) of resource type '[ParentObject] Server1'.
+0.021087338832594,--,--,--,--,Resource 'Server1' selecting object 'DefaultEntity.16' waiting at rank position '1' in allocation queue which contains '2' item(s).
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.16' seized '1' capacity unit(s) of resource 'Server1'.
+0.021087338832594,--,--,--,--,Changing from AutoState 'Starved' to 'Busy' on resource 'Server1'.
+0.021087338832594,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '0'.
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Seize] Server,Object 'DefaultEntity.16' completed seize of '1' resource(s) of resource type '[ParentObject] Server1'.
+0.021087338832594,--,--,--,--,Resource 'Server1' checking allocation queue which contains '1' item(s).
+0.021087338832594,--,--,--,--,Resource 'Server1' unable to select any items waiting in its allocation queue. Resource is fully allocated or off shift.
+0.021087338832594,DefaultEntity.15,Server1,4.OnEnteredOutputBuffer,[Transfer] ToOutputNode,Entity 'DefaultEntity.15' transferring from '[Station] Server1.OutputBuffer' into node 'Output@Server1'.
+0.021087338832594,DefaultEntity.15,Output@Server1,0.OnEnteredFromAssociatedObject,[Begin],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution started.
+0.021087338832594,DefaultEntity.15,Output@Server1,0.OnEnteredFromAssociatedObject,[Fire] EnteredEvent,Firing event 'Output@Server1.Entered'.
+0.021087338832594,DefaultEntity.15,Output@Server1,0.OnEnteredFromAssociatedObject,[Transfer] ToOutboundLink,Entity 'DefaultEntity.15' transferring from '[Node] Output@Server1' onto link 'Path2'.
+0.021087338832594,DefaultEntity.15,Path2,5.OnEntered,[Begin],Process 'Path2.OnEntered' execution started.
+0.021087338832594,DefaultEntity.15,Path2,5.OnEntered,[Assign] EntityMovementRate,Assigning state variable 'DefaultEntity.15.Movement.Rate' the value '5040' Meters per Hour. Previous value was '5040' Meters per Hour.
+0.021087338832594,DefaultEntity.15,Path2,5.OnEntered,[EndTransfer] OntoPath,Entity 'DefaultEntity.15' ending transfer onto link 'Path2'.
+0.021087338832594,DefaultEntity.15,Path2,5.OnEntered,[End],Process 'Path2.OnEntered' execution ended.
+0.021087338832594,DefaultEntity.15,Server1,1.OnEnteredProcessing,[End],Process 'Server1.OnEnteredProcessing' execution ended.
+0.021087338832594,--,--,--,--,Changing from AutoState 'Busy' to 'Blocked' on resource 'Server1'.
+0.021087338832594,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '2'. Previous value was '1'.
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[Transfer] ToProcessing,Entity 'DefaultEntity.16' transferring from '[Station] Server1.InputBuffer' into station 'Server1.Processing'.
+0.021087338832594,--,--,--,--,Changing from AutoState 'Blocked' to 'Busy' on resource 'Server1'.
+0.021087338832594,--,--,--,--,Assigning state variable 'Server1.ResourceState' the value '1'. Previous value was '2'.
+0.021087338832594,DefaultEntity.15,Server1,4.OnEnteredOutputBuffer,[End],Process 'Server1.OnEnteredOutputBuffer' execution ended.
+0.021087338832594,DefaultEntity.15,Output@Server1,0.OnEnteredFromAssociatedObject,[End],Process 'Output@Server1.OnEnteredFromAssociatedObject' execution ended.
+0.021087338832594,DefaultEntity.16,Server1,1.OnEnteredProcessing,[Begin],Process 'Server1.OnEnteredProcessing' execution started.
+0.021087338832594,DefaultEntity.16,Server1,1.OnEnteredProcessing,[EndTransfer] IntoProcessing,Entity 'DefaultEntity.16' ending transfer into station 'Server1.Processing'.
+0.021087338832594,DefaultEntity.16,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token branching on condition 'ProcessType==Enum.TaskProcessType.SpecificTime'.
+0.021087338832594,DefaultEntity.16,Server1,1.OnEnteredProcessing,[Decide] IfProcessTypeSpecificTime,Token sent to 'True' exit.
+0.021087338832594,DefaultEntity.16,Server1,1.OnEnteredProcessing,[Delay] ProcessingTime,Delaying token for '0.00408313188324669' Hours until time '0.0251704707158407' Hours. Delay multiplier was '1'.
+0.021087338832594,DefaultEntity.16,Server1,2.OnEnteredInputBuffer,[End],Process 'Server1.OnEnteredInputBuffer' execution ended.
+0.0211865451818003,DefaultEntity.15,Output@Server1,2.OnExited,[Begin],Process 'Output@Server1.OnExited' execution started.
+0.0211865451818003,DefaultEntity.15,Output@Server1,2.OnExited,[Fire] ExitedEvent,Firing event 'Output@Server1.Exited'.
+0.0211865451818003,DefaultEntity.15,Output@Server1,2.OnExited,[Execute] ExitedAddOnProcess,Executing process 'Output_Server1_Exited'.
+0.0211865451818003,DefaultEntity.15,Model,0.Output_Server1_Exited,[Begin],Process 'Output_Server1_Exited' execution started.
+0.0211865451818003,DefaultEntity.15,Model,0.Output_Server1_Exited,[MyWriteText] MyWriteText1,"Writing=[0.0211865451818003,DefaultEntity.15,0.0118348832054092,0.00935166197639108,Line4Col1] to file=c:\temp\MyOutTestFile.txt"
+0.0211865451818003,DefaultEntity.15,Model,0.Output_Server1_Exited,[MyReadText] MyReadText1,"Read in the line#32=[Line5Col1, Col2, Col3] from file MyInTextFile1 into 3 states"
+0.0211865451818003,DefaultEntity.15,Model,0.Output_Server1_Exited,[End],Process 'Output_Server1_Exited' execution ended.
+0.0211865451818003,DefaultEntity.15,Output@Server1,2.OnExited,[End],Process 'Output@Server1.OnExited' execution ended.
+

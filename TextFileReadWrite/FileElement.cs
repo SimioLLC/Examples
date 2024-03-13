@@ -23,7 +23,7 @@ namespace CustomSimioStep
         /// </summary>
         public string Description
         {
-            get { return "Used with ReadText and WriteText steps.\nThe File element may be used in conjunction with the user defined Read and Write steps to read and write to an external file."; }
+            get { return "Used with ReadText and WriteText steps.\nThe File element is used in conjunction with the user defined Read and Write steps to read and write to an external file."; }
         }
 
         /// <summary>
@@ -52,9 +52,8 @@ namespace CustomSimioStep
             IPropertyDefinition pd = schema.PropertyDefinitions.AddStringProperty("FilePath", String.Empty);
             pd.Description = "The name of the text file that is being read from or written to.";
 
-            IPropertyDefinition mergeOutputFiles = schema.PropertyDefinitions.AddBooleanProperty("AutoMergeWriteStepFilesForExperiment");
-            mergeOutputFiles.DisplayName = "Auto Merge Write Step Files For Experiment";
-            mergeOutputFiles.Description = "Specifies whether to automatically merge all the experiment output files per File Element into one new file. If enabled, the new file will be located in the same folder.";
+            pd = schema.PropertyDefinitions.AddStringProperty("Delimiter", ",");
+            pd.Description = "The delimiter that is placed between expressions.";
         }
 
         /// <summary>
@@ -69,65 +68,65 @@ namespace CustomSimioStep
         #endregion
     }
 
+    /// <summary>
+    /// Element containing information about a file, 
+    /// as well as open it at runtime.
+    /// </summary>
     class FileElement : IElement, IDisposable
     {
         IElementData _data;
-        string _writerFileName;
-        string _readerFileName;
-        bool bMergeFileElementExperimentOutputFiles;
+        string _writerFilePath;
+        string _readerFilePath;
+
+        string _filePath = null;
+
+        /// <summary>
+        /// This is done so we have access to it by other classes, such as the Read and Write Steps.
+        /// </summary>
+        public string FilePath { get { return _filePath; } set { _filePath = value; } }
+
         public FileElement(IElementData data)
         {
             _data = data;
-            IPropertyReader fileNameProp = _data.Properties.GetProperty("FilePath");
-            bMergeFileElementExperimentOutputFiles =  _data.Properties.GetProperty("AutoMergeWriteStepFilesForExperiment").GetDoubleValue(_data.ExecutionContext) == 1.0;
+            IPropertyReader _prFilepath = _data.Properties.GetProperty("FilePath");
 
             // Cache the names of the files to open for reading or writing
-            string fileName = fileNameProp.GetStringValue(_data.ExecutionContext);
-            if (String.IsNullOrEmpty(fileName) == false)
+            if ( FilePath == null ) 
+            {
+                FilePath = _prFilepath.GetStringValue(_data.ExecutionContext);
+            }
+
+            if ( String.IsNullOrEmpty(FilePath) == false)
             {
                 string fileRoot = null;
                 string fileDirectoryName = null;
-                string fileExtension = null;
 
                 try
                 {
-                    fileRoot = System.IO.Path.GetPathRoot(fileName);
-                    fileDirectoryName = System.IO.Path.GetDirectoryName(fileName);
-                    fileExtension = System.IO.Path.GetExtension(fileName);
+                    fileRoot = System.IO.Path.GetPathRoot(FilePath);
+                    fileDirectoryName = System.IO.Path.GetDirectoryName(FilePath);
                 }
-                catch (ArgumentException e)
+                catch (ArgumentException ex)
                 {
-                    data.ExecutionContext.ExecutionInformation.ReportError(String.Format("Failed to create runtime file element. Message: {0}", e.Message));
+                    data.ExecutionContext.ExecutionInformation.ReportError($"Failed to create runtime file element. Filepath={FilePath}. Err={ex.Message}");
                 }
 
-                string simioProjectFolder = _data.ExecutionContext.ExecutionInformation.ProjectFolder;
-                string simioExperimentName = _data.ExecutionContext.ExecutionInformation.ExperimentName;
-                string simioScenarioName = _data.ExecutionContext.ExecutionInformation.ScenarioName;
-                string simioReplicationNumber = _data.ExecutionContext.ExecutionInformation.ReplicationNumber.ToString();
+                // Left these here to show how other potential filenames could be constructed
+                ////string simioExperimentName = _data.ExecutionContext.ExecutionInformation.ExperimentName;
+                ////string simioScenarioName = _data.ExecutionContext.ExecutionInformation.ScenarioName;
+                ////string simioReplicationNumber = _data.ExecutionContext.ExecutionInformation.ReplicationNumber.ToString();
 
+                // If missing directory or root, then set directory to Simio project folder.
                 if (String.IsNullOrEmpty(fileDirectoryName) || String.IsNullOrEmpty(fileRoot))
                 {
+                    string simioProjectFolder = _data.ExecutionContext.ExecutionInformation.ProjectFolder;
+
                     fileDirectoryName = simioProjectFolder;
-                    fileName = fileDirectoryName + "\\" + fileName;
+                    FilePath = $@"{fileDirectoryName}\{FilePath}";
                 }
 
-                _readerFileName = fileName;
-
-                if (String.IsNullOrEmpty(simioExperimentName))
-                {
-                    _writerFileName = fileName;
-                }
-                else
-                {
-                    var dirName = System.IO.Path.GetDirectoryName(fileName);
-                    var sanitizedFileName = FileUtils.SanitizeFileName(System.IO.Path.ChangeExtension(System.IO.Path.GetFileName(fileName), null) + "_" + 
-                                                                       simioExperimentName + "_" + 
-                                                                       simioScenarioName + 
-                                                                       "_Rep" + simioReplicationNumber + 
-                                                                       fileExtension);
-
-                    _writerFileName = System.IO.Path.Combine(dirName, sanitizedFileName);
-                }
+                _readerFilePath = FilePath;
+                _writerFilePath = FilePath;
             }
         }
 
@@ -136,29 +135,26 @@ namespace CustomSimioStep
         {
             get
             {
-                // We can't read and write at the same time
+                // If there is already reader for this file, then we cannot write.
                 if (_reader != null)
                 {
-                    _data.ExecutionContext.ExecutionInformation.ReportError(String.Format("Trying to write to {0}, which is already open for reading.", _writerFileName ?? "[No file specified]"));
+                    _data.ExecutionContext.ExecutionInformation.ReportError($"Trying to write to {_writerFilePath}, which is already open for reading.");
                     return null;
                 }
 
                 // If we don't already have a writer, create one
                 try
                 {
-                    if (String.IsNullOrEmpty(_writerFileName))
+                    if (String.IsNullOrEmpty(_writerFilePath))
                         ReportFileOpenError("[No file specified]", "writing", "[None]");
                     else if (_writer == null)
-                        _writer = new System.IO.StreamWriter(_writerFileName);
+                        _writer = new System.IO.StreamWriter(_writerFilePath);
                 }
                 catch (Exception e)
                 {
                     _writer = null;
-                    ReportFileOpenError(_writerFileName, "writing", e.Message);
+                    ReportFileOpenError(_writerFilePath, "writing", e.Message);
                 }
-
-                if (bMergeFileElementExperimentOutputFiles)
-                    _data.ExecutionContext.ExecutionInformation.NotifyTextFileWritten(_readerFileName, _writerFileName);
 
                 return _writer;
             }
@@ -172,22 +168,22 @@ namespace CustomSimioStep
                 // We can't read and write at the same time
                 if (_writer != null)
                 {
-                    _data.ExecutionContext.ExecutionInformation.ReportError(String.Format("Trying to read from {0}, which is already open for writing.", _readerFileName ?? "[No file specified]"));
+                    _data.ExecutionContext.ExecutionInformation.ReportError($"Trying to read from {_readerFilePath}, which is already open for writing." ?? "[No file specified]");
                     return null;
                 }
 
                 // If we don't already have a reader, create one
                 try
                 {
-                    if (String.IsNullOrEmpty(_readerFileName))
+                    if (String.IsNullOrEmpty(_readerFilePath))
                         ReportFileOpenError("[No file specified]", "reading", "[None]");
                     if (_reader == null)
-                        _reader = new System.IO.StreamReader(_readerFileName);
+                        _reader = new System.IO.StreamReader(_readerFilePath);
                 }
                 catch (Exception e)
                 {
                     _reader = null;
-                    ReportFileOpenError(_readerFileName, "reading", e.Message);
+                    ReportFileOpenError(_readerFilePath, "reading", e.Message);
                 }
 
                 return _reader;
@@ -202,20 +198,18 @@ namespace CustomSimioStep
         #region IElement Members
 
         /// <summary>
-        /// Method called when the simulation run is initialized.
+        /// No initialization logic needed, we will open the file on the first read or write request
         /// </summary>
         public void Initialize()
         { 
-            // No initialization logic needed, we will open the file on the first read or write request
         }
 
         /// <summary>
         /// Method called when the simulation run is terminating.
+        /// We'll close the file here.
         /// </summary>
         public void Shutdown()
         {
-            // On shutdown, we need to make sure to close the file
-
             if (_writer != null)
             {
                 try
@@ -225,7 +219,7 @@ namespace CustomSimioStep
                 }
                 catch(Exception e)
                 {
-                    _data.ExecutionContext.ExecutionInformation.ReportError($"There was a problem closing file '{_writerFileName ?? String.Empty}' for writing. Message: {e.Message}");
+                    _data.ExecutionContext.ExecutionInformation.ReportError($"There was a problem closing file '{_writerFilePath ?? String.Empty}' for writing. Message: {e.Message}");
                 }
                 finally
                 {
@@ -242,7 +236,7 @@ namespace CustomSimioStep
                 }
                 catch(Exception e)
                 {
-                    _data.ExecutionContext.ExecutionInformation.ReportError($"There was a problem closing file '{_readerFileName ?? String.Empty}' for reading. Message: {e.Message}");
+                    _data.ExecutionContext.ExecutionInformation.ReportError($"There was a problem closing file '{_readerFilePath ?? String.Empty}' for reading. Message: {e.Message}");
                 }
                 finally
                 {
@@ -261,5 +255,5 @@ namespace CustomSimioStep
         }
 
         #endregion
-    }
+    }  // FileElement
 }

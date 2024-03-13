@@ -215,9 +215,11 @@ namespace SelectBestScenario
         #endregion
     }
 
-    // This add-in implements the optional (and advanced) IExperimentRunner interface
-    // in order to take greater control of the process of running the experiment.
-    // The main reason we do this is so we can do scenario screening.
+    /// <summary>
+    /// This add-in implements the optional (and advanced) IExperimentRunner interface
+    /// in order to take greater control of the process of running the experiment.
+    /// The main reason we do this is so we can do scenario screening.
+    /// </summary>
     public class SelectBestScenarioExperimentRunner : IExperimentRunner
     {
         public SelectBestScenarioExperimentRunner(SelectBestScenarioAddIn addIn)

@@ -13,6 +13,9 @@ using SimioAPI.Extensions;
 
 namespace BinaryGate
 {
+    /// <summary>
+    /// resets (closes) the user-defined Element called GateElement.
+    /// </summary>
     class CloseStepDefinition : IStepDefinition
     {
         #region IStepDefinition Members
@@ -81,14 +84,18 @@ namespace BinaryGate
         #endregion
     }
 
+
+    /// <summary>
+    /// Close the gate (by making the Gate Element 'closed')
+    /// </summary>
     class CloseStep : IStep
     {
         IPropertyReaders _properties;
-        IElementProperty _gateProp;
+        IElementProperty _prGate; // Property Reader for Gate Element
         public CloseStep(IPropertyReaders properties)
         {
             _properties = properties;
-            _gateProp = (IElementProperty)_properties.GetProperty("Gate");
+            _prGate = (IElementProperty)_properties.GetProperty("Gate");
         }
 
         #region IStep Members
@@ -98,9 +105,9 @@ namespace BinaryGate
         /// </summary>
         public ExitType Execute(IStepExecutionContext context)
         {
-            GateElement gate = (GateElement)_gateProp.GetElement(context);
+            GateElement gate = (GateElement)_prGate.GetElement(context);
             gate.CloseGate();
-            context.ExecutionInformation.TraceInformation($"Closed gate {(_gateProp as IPropertyReader).GetStringValue(context)}");
+            context.ExecutionInformation.TraceInformation($"Closed gate {(_prGate as IPropertyReader).GetStringValue(context)}");
             return ExitType.FirstExit;
         }
 

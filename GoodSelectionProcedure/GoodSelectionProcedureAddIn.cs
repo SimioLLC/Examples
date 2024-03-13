@@ -6,6 +6,7 @@ using SimioAPI;
 using SimioAPI.Extensions;
 using GoodSelectionProcedure.Utilities;
 using System.Threading.Tasks;
+using System.Globalization;
 
 /**
  * The Good Selection Procedure (GSP)
@@ -32,7 +33,7 @@ namespace GoodSelectionProcedure
         /// </summary>
         public string Name
         {
-            get { return "Select Best Scenario using GSP"; }
+            get { return "My Select Best Scenario using GSP"; }
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace GoodSelectionProcedure
         /// </summary>
         public string Description
         {
-            get { return "Use the Good Selection Procedure for scenario ranking and selection.\nGSP is a parallel scenario selection algorithm with good performance for large-scale problems."; }
+            get { return "Demonstration of a Good Selection Procedure for scenario ranking and selection.\nGSP is a parallel scenario selection algorithm with good performance for large-scale problems."; }
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace GoodSelectionProcedure
         /// </summary>
         public System.Drawing.Image Icon
         {
-            get { return MyGoodSelectionProcedure.Properties.Resources.Icon; }
+            get { return MyGoodSelectionProcedure.Properties.Resources.MyTrophy32x32; }
         }
 
         /// <summary>
@@ -111,15 +112,54 @@ namespace GoodSelectionProcedure
         }
 
         /// <summary>
-        /// Called by Simio when the user is editing an experiment parameter.  You may validate and possibly reject the new value.
+        /// Try and parse string into a double, making sure that a trailing percent sign
+        /// is handled. Parsing is according to current culture.
         /// </summary>
-        public bool ExperimentParameterValueChanging(IExperiment experiment, IExperimentParameter parameter, string proposedValue, ref string failureReason)
+        /// <param name="proposedValue"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool DoubleParseHandlePercent(string proposedValue, out double result, out string failureReason)
+        {
+            failureReason = string.Empty;
+            result = double.NaN;
+            try
+            {
+                if (proposedValue.Trim().EndsWith("%"))
+                {
+                    string percentString = proposedValue.Remove(proposedValue.Length - 1);
+                    if (Double.TryParse(percentString, NumberStyles.Any, CultureInfo.CurrentCulture, out result))
+                    {
+                        result /= 100.0;  // Convert to fractional representation
+                    }
+                }
+                else
+                {
+                    if ( !Double.TryParse(proposedValue, NumberStyles.Any, CultureInfo.CurrentCulture, out result) )
+                    {
+                        failureReason = $"Cannot parse={proposedValue}";
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                failureReason = $"Cannot Parse={proposedValue}. Err={ex.Message}";
+                return false;
+            }
+        }
+
+            /// <summary>
+            /// Called by Simio when the user is editing an experiment parameter.  
+            /// Return true if validated, otherwise return an error message.
+            /// </summary>
+            public bool ExperimentParameterValueChanging(IExperiment experiment, IExperimentParameter parameter, string proposedValue, ref string failureReason)
         {
             // Validate the values that the user entered.
             if (parameter == ProbabilityOfGoodSelectionParameter)
             {
                 double result;
-                if (Double.TryParse(proposedValue, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.CurrentCulture, out result) == false || result <= 0.0 || result >= 1.0)
+                if (DoubleParseHandlePercent(proposedValue, out result, out failureReason) == false || result <= 0.0 || result >= 1.0)
                 {
                     failureReason = "Confidence Level must be a probability between 0.0 and 1.0.";
                     return false;
@@ -130,8 +170,7 @@ namespace GoodSelectionProcedure
             {
                 if (!String.IsNullOrEmpty(proposedValue))
                 {
-                    double result;
-                    if (Double.TryParse(proposedValue, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.CurrentCulture, out result) == false || result <= 0.0)
+                    if (DoubleParseHandlePercent(proposedValue, out double result, out failureReason) == false || result <= 0.0)
                     {
                         failureReason = "Indifference Zone must be a real number > 0.0.";
                         return false;
@@ -141,10 +180,9 @@ namespace GoodSelectionProcedure
 
             if (parameter == ReplicationLimitParameter)
             {
-                int result;
-                if (Int32.TryParse(proposedValue, out result) == false || result < n1)
+                if (Int32.TryParse(proposedValue, out int result) == false || result < n1)
                 {
-                    failureReason = "Replication Limit must be at least " + n1.ToString() + ".";
+                    failureReason = $"Replication Limit (proposed is {proposedValue} must be at least {n1}.";
                     return false;
                 }
             }
@@ -233,8 +271,10 @@ namespace GoodSelectionProcedure
         #endregion
     }
 
-    // A class for storing scenario and the statistics of its primary response
-    // such as sample mean, sample variance, batch size and sample size
+    /// <summary>
+    /// A class for storing scenario and the statistics of its primary response
+    /// such as sample mean, sample variance, batch size and sample size
+    /// </summary>
     public class IScenarioPar
     {
         IScenario _scenario;
@@ -288,10 +328,11 @@ namespace GoodSelectionProcedure
             n = _n;
         }
     }
-
-    // This add-in implements the optional (and advanced) IExperimentRunner interface
-    // in order to take greater control of the process of running the experiment.
-    // The main reason we do this is so we can do scenario screening.
+    /// <summary>
+    /// This add-in implements the optional (and advanced) IExperimentRunner interface
+    /// in order to take greater control of the process of running the experiment.
+    /// The main reason we do this is so we can do scenario screening.
+    /// </summary>
     public class GoodSelectionProcedureExperimentRunner : IExperimentRunner
     {
         double alpha;

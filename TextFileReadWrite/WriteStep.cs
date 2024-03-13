@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using SimioAPI;
 using SimioAPI.Extensions;
 
@@ -57,13 +58,17 @@ namespace CustomSimioStep
             IPropertyDefinition pd;
 
             // Reference to the file to write to
-            pd = schema.AddElementProperty("File", FileElementDefinition.MY_ID);
+            pd = schema.AddElementProperty("FileInfo", FileElementDefinition.MY_ID);
 
             // And a format specifier
             pd = schema.AddStringProperty("Format", String.Empty);
             pd.Description = "The format of the string to write out in C# string format syntax. Expressions defined in the 'Items' repeat group may " +
                 "be included as data parameters in the formatted string using zero-based, sequentially numbered format characters within curly braces (e.g., the format character '{3}' indicates output of the fourth item in the 'Items' repeat group). " +
                 "If this property is not specified, then a comma-delimited format of '{0},{1}, ,{N}' is assumed. Refer to a C# reference for more information on string format syntax in C#.";
+            pd.Required = false;
+
+            pd = schema.AddStringProperty("Delimiter", ",");
+            pd.Description = "The delimiter added between each token when using the default format.";
             pd.Required = false;
 
             // A repeat group of values to write out
@@ -88,16 +93,20 @@ namespace CustomSimioStep
 
     class WriteStep : IStep
     {
+        // For efficiency, define and access the PropertyReaders in the constructor
         IPropertyReaders _properties;
-        IElementProperty _fileElement;
-        IRepeatingPropertyReader _items;
-        IPropertyReader _format;
+        IElementProperty _prFileElement;
+        IRepeatingPropertyReader _prItems;
+        IPropertyReader _prFormat;
+        IPropertyReader _prDelimiter;
+
         public WriteStep(IPropertyReaders properties)
         {
             _properties = properties;
-            _fileElement = (IElementProperty)_properties.GetProperty("File");
-            _items = (IRepeatingPropertyReader)_properties.GetProperty("Items");
-            _format = _properties.GetProperty("Format");
+            _prFileElement = (IElementProperty)_properties.GetProperty("FileInfo");
+            _prItems = (IRepeatingPropertyReader)_properties.GetProperty("Items");
+            _prFormat = _properties.GetProperty("Format");
+            _prDelimiter = _properties.GetProperty("Delimiter");
         }
 
         #region IStep Members
@@ -107,20 +116,20 @@ namespace CustomSimioStep
         /// </summary>
         public ExitType Execute(IStepExecutionContext context)
         {
-            // Get the file
-            FileElement fileElement = (FileElement)_fileElement.GetElement(context);
+            // Get the file Element
+            FileElement fileElement = (FileElement)_prFileElement.GetElement(context);
             if (fileElement == null)
             {
-                context.ExecutionInformation.ReportError("File element is null.  Makes sure FilePath is defined correctly.");
+                context.ExecutionInformation.ReportError("FileInfo Element is null.  Makes sure FilePath is defined correctly.");
             }
             else
             {
                 // Get an array of double values from the repeat group's list of expressions
-                object[] paramsArray = new object[_items.GetCount(context)];
-                for (int i = 0; i < _items.GetCount(context); i++)
+                object[] paramsArray = new object[_prItems.GetCount(context)];
+                for (int i = 0; i < _prItems.GetCount(context); i++)
                 {
                     // The thing returned from GetRow is IDisposable, so we use the using() pattern here
-                    using (IPropertyReaders row = _items.GetRow(i, context))
+                    using (IPropertyReaders row = _prItems.GetRow(i, context))
                     {
                         // Get the expression property
                         IExpressionPropertyReader expressionProp = row.GetProperty("Expression") as IExpressionPropertyReader;
@@ -129,18 +138,27 @@ namespace CustomSimioStep
                     }
                 }
 
-                string format = _format.GetStringValue(context);
+                string format = _prFormat.GetStringValue(context);
+                string delimiter = _prDelimiter.GetStringValue(context);
+                if (string.IsNullOrEmpty(delimiter))
+                    delimiter = ",";
                 // If the user didn't provide a format we will just make our own in the form {0},{1},{2},.. {n}
+                // assuming in this case that the delimiter was a comma.
                 if (String.IsNullOrEmpty(format))
                 {
                     format = "";
-                    for (int i = 0; i < _items.GetCount(context); i++)
+                    var itemCount = _prItems.GetCount(context);
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < itemCount; i++)
                     {
-                        format += "{" + i + (i == _items.GetCount(context) - 1 ? "}" : "},");
+                        sb.Append($"{{{i}}}"); // e.g. "{3}"
+                        if (i != itemCount - 1)
+                            sb.Append(delimiter);
                     }
+                    format = sb.ToString();
                 }
 
-                string writeOut = null;
+                string writeOut;
                 try
                 {
                     writeOut = String.Format(format, paramsArray);
@@ -148,7 +166,7 @@ namespace CustomSimioStep
                 catch (FormatException)
                 {
                     writeOut = null;
-                    context.ExecutionInformation.ReportError("Bad format provided in Write step.");
+                    context.ExecutionInformation.ReportError($"Bad format=[{format}] provided in Write step.");
                 }
 
                 if (writeOut != null)
@@ -159,7 +177,9 @@ namespace CustomSimioStep
                         try
                         {
                             fileElement.Writer.WriteLine(writeOut);
-                            context.ExecutionInformation.TraceInformation(String.Format("Writing out \"{0}\" to file {1}", writeOut, (_fileElement as IPropertyReader).GetStringValue(context)));
+                            IElement elmt = _prFileElement.GetElement(context);
+                            string myPath = (elmt as FileElement).FilePath;
+                            context.ExecutionInformation.TraceInformation($"Writing=[{writeOut}] to file={myPath}");
                         }
                         catch (Exception)
                         {

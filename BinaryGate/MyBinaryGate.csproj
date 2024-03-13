@@ -12,10 +12,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SimioAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Simio LLC\Simio\SimioAPI.dll</HintPath>
+      <HintPath>c:\Program Files\Simio LLC\Simio\SimioAPI.dll</HintPath>
     </Reference>
     <Reference Include="SimioAPI.Extensions">
-      <HintPath>..\..\..\..\..\..\Program Files\Simio LLC\Simio\SimioAPI.Extensions.dll</HintPath>
+      <HintPath>c:\Program Files\Simio LLC\Simio\SimioAPI.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

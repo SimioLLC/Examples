@@ -24,7 +24,7 @@ namespace BinaryGate
         /// </summary>
         public string Description
         {
-            get { return "The OpenGate step may be used to set the status of a user defined BinaryGate element to 'Open'."; }
+            get { return "The OpenGate Step sets the state of a user-defined BinaryGate element to 'Open'."; }
         }
 
         /// <summary>
