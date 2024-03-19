@@ -45,15 +45,13 @@ namespace CustomSimioStep
         public static readonly Guid MY_ID = new Guid("{29F7FF04-3EC6-4EDC-A614-1DED3DF1A9F8}"); //Jan2024/danH
 
         /// <summary>
-        /// Method called that defines the property, state, and event schema for the element.
+        /// Method called that defines the property, state, as well as event schema for the element.
         /// </summary>
         public void DefineSchema(IElementSchema schema)
         {
             IPropertyDefinition pd = schema.PropertyDefinitions.AddStringProperty("FilePath", String.Empty);
             pd.Description = "The name of the text file that is being read from or written to.";
 
-            pd = schema.PropertyDefinitions.AddStringProperty("Delimiter", ",");
-            pd.Description = "The delimiter that is placed between expressions.";
         }
 
         /// <summary>
@@ -111,7 +109,7 @@ namespace CustomSimioStep
                     data.ExecutionContext.ExecutionInformation.ReportError($"Failed to create runtime file element. Filepath={FilePath}. Err={ex.Message}");
                 }
 
-                // Left these here to show how other potential filenames could be constructed
+                // Left these here as comments to show how other potential filenames could be constructed
                 ////string simioExperimentName = _data.ExecutionContext.ExecutionInformation.ExperimentName;
                 ////string simioScenarioName = _data.ExecutionContext.ExecutionInformation.ScenarioName;
                 ////string simioReplicationNumber = _data.ExecutionContext.ExecutionInformation.ReplicationNumber.ToString();

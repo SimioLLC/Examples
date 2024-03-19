@@ -363,13 +363,17 @@ namespace GoodSelectionProcedure
 
         #region IExperimentRunner Members
 
+
+        /// <summary>
+        /// Make a list of all of the scenarios currently marked as Active.
+        /// These will be our starting point, and we'll remove scenarios from
+        /// this list until only one remains.
+        /// </summary>
+        /// <param name="context"></param>
         public void Run(IExperimentationContext context)
         {
             Validate(context); // Will throw an exception if something is not acceptable.
 
-            // Make a list of all of the scenarios currently marked as Active.
-            // These will be our starting point, and we'll remove scenarios from
-            // this list until only one remains.
             _scenarios = new List<IScenarioPar>();
             foreach (IScenario scenario in context.Experiment.Scenarios)
             {
@@ -390,7 +394,7 @@ namespace GoodSelectionProcedure
             T = new double[_scenarios.Count];
 
             // Stage 0
-            RunStage0(context);
+            RunStage0();
 
             // Stage 1
             if (RunStage1(context) == false)
@@ -412,7 +416,11 @@ namespace GoodSelectionProcedure
 
         #endregion
 
-        void RunStage0(IExperimentationContext context)
+        /// <summary>
+        /// Initialization. Set T[] to 1.0
+        /// </summary>
+        /// <param name="context"></param>
+        void RunStage0()
         {
             for (int scenarioIndex = 0; scenarioIndex < k; scenarioIndex++)
             {
@@ -477,12 +485,19 @@ namespace GoodSelectionProcedure
             return true;
         }
 
+        /// <summary>
+        /// For all scenarios, determine the number of Rinott replications
+        /// required. If it exceeds the maximum reps, then set required to maximum
+        /// </summary>
+        /// <param name="context"></param>
         void RunStage3(IExperimentationContext context)
         {
             ifRinottValid = true;
+
             foreach (IScenarioPar scenario in _scenarios)
             {
                 int N_rinott = (int)Math.Ceiling(rinott_h * rinott_h / delta / delta * scenario.S2);
+
                 if (N_rinott > scenario.scenario.ReplicationsCompleted)
                 {
                     if (N_rinott > replicationLimit)
@@ -499,9 +514,14 @@ namespace GoodSelectionProcedure
             if (RunScenarios(context) == false)
                 return;
 
-            SelectBest(context);
+            SelectBest();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <exception cref="ApplicationException"></exception>
         void CalcBatchSize(IExperimentationContext context)
         {
             // First, we need an array of raw values of the primary response.
@@ -516,7 +536,7 @@ namespace GoodSelectionProcedure
                     if (_scenarios[scenarioIndex].scenario.GetResponseValueForReplication(_primaryResponse, replicationIndex, ref sampleValue))
                         X[scenarioIndex, replicationIndex - 1] = sampleValue;
                     else // If we don't get a value from Simio, we can't continue.
-                        throw new ApplicationException("IScenario.GetResponseValueForReplication failed for scenario " + _scenarios[scenarioIndex].scenario.Name + " replication " + replicationIndex.ToString());
+                        throw new ApplicationException($"IScenario.GetResponseValueForReplication failed for scenario={_scenarios[scenarioIndex].scenario.Name} replication={replicationIndex}");
                 }
             }
             double avgST = 0.0;
@@ -546,9 +566,15 @@ namespace GoodSelectionProcedure
             }
         }
 
-        void SelectBest(IExperimentationContext context)
+        /// <summary>
+        /// Choose the scenario with the best response value, 
+        /// and set the other scenarions to inactive
+        /// </summary>
+        /// <param name="context"></param>
+        void SelectBest()
         {
             double Xbar = double.NaN;
+
             _scenarios[0].scenario.GetResponseValue(_primaryResponse, ref Xbar);
             double bestXbar = Xbar;
             int bestIndex = 0;
